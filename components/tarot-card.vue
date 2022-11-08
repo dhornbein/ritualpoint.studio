@@ -1,5 +1,5 @@
 <template>
-  <div class="card" :class="{'card--flipped': flipped}" @click="flipCard">
+  <div class="card noSelect" :class="{'card--flipped': flipped}" @click="flipCard">
     <div class="card__face card__face--front">
       <img :src="cards[randomCard].img" :alt="cards[randomCard].name" />
     </div>
@@ -40,6 +40,20 @@
       transform: rotateX(0deg);
     }
   }
+}
+
+.noSelect {
+  -webkit-tap-highlight-color: transparent;
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+.noSelect:focus {
+  outline: none !important;
 }
 </style>
 

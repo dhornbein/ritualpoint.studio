@@ -6,7 +6,6 @@
 
 <script setup>
 const props = defineProps(['href','dark'])
-console.log(props.href);
 
 function navigate() {
   if (props.href.startsWith('//')) {
