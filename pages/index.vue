@@ -1,5 +1,5 @@
 <template>
-  <div class="flex flex-col items-center">
+  <div class="flex flex-col items-center p-4 max-w-screen-md mx-auto">
     <title>Ritual Point Art & Divination</title>
     <section>
       <img src="~/assets/img/logo_mark.png" alt="" class="w-[50vw] mx-auto mb-10 max-w-[50vh]">
@@ -14,6 +14,14 @@
       <img src="~/assets/img/skin.png" alt="Skin">
       <h2 class="title mb-4">& read</h2>
       <img src="~/assets/img/tarot.png" alt="Tarot" class="max-w-[200px]">
+    </section>
+    <img src="~/assets/img/lines.png" alt="" class="max-w-[150px] rotate-180 ">
+    <section>
+      <nuxt-link to="dark-moon-tarot" class="text-2xl font-weird text-center">
+        <h2 class="title">Discover my hand drawn tarot deck</h2>
+        <img src="~/assets/dark-moon-tarot/logo-white.png" alt="Dark Moon Tarot">
+        <BaseButton>Learn More</BaseButton>
+      </nuxt-link>
     </section>
     <img src="~/assets/img/lines.png" alt="" class="max-w-[150px]">
     <section>
@@ -57,7 +65,7 @@
 <style lang="scss">
 @import url("https://use.typekit.net/jsv6drp.css");
 body {
-  @apply bg-stone-900 text-white p-4 max-w-screen-md mx-auto;
+  @apply bg-stone-900 text-white;
   font-family: nitti-typewriter-normal, monospace;
 }
 .font-weird {

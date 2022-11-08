@@ -1,11 +1,11 @@
 <template>
-  <button @click="navigate">
+  <button @click="navigate" :dark="dark">
     <slot></slot>
   </button>
 </template>
 
 <script setup>
-const props = defineProps(['href'])
+const props = defineProps(['href','dark'])
 console.log(props.href);
 
 function navigate() {
@@ -29,6 +29,18 @@ button {
   &:active {
     @apply pt-6;
     background-image: url(~/assets/img/button_click.png);
+  }
+
+  &[dark] {
+    @apply bg-transparent text-stone-900;
+    background-image: url(~/assets/img/button_black.png);
+    &:hover {
+      background-image: url(~/assets/img/button_black_hover.png);
+    }
+    &:active {
+      @apply pt-6;
+      background-image: url(~/assets/img/button_black_click.png);
+    }
   }
 }
 </style>
