@@ -5,7 +5,7 @@
       <nuxt-link to="/">
         <img
           class="w-24"
-          src="~/assets/img/logo_black.png"
+          src="/img/logo_black.png"
           alt="Ritual Point"
         /> home
       </nuxt-link>
@@ -15,7 +15,7 @@
     
     <!-- page advertising the pre-sale dark moon tarot with a link to stripe checkout page there is an $85 option and a $105 option which has more "vibes" than the other -->
     <div class="flex flex-col items-center gap-8">
-      <h1 class="text-4xl font-bold text-center mt-8 max-w-screen-md"><img src="~/assets/dark-moon-tarot/logo.png" alt="Dark Moon Tarot"></h1>
+      <h1 class="text-4xl font-bold text-center mt-8 max-w-screen-md"><img src="/dark-moon-tarot/logo.png" alt="Dark Moon Tarot"></h1>
       <h2 class="title font-weird">Pre-sale</h2>
       <p class="text-center">Click the card to flip</p>
       <div class="card-pull">
@@ -34,7 +34,7 @@
         <img src="/deck-mock/p01_card_sm.png" alt="Empress">
       </div>
       <div class="bg-white w-full p-8 flex justify-center">
-        <img src="~/assets/dark-moon-tarot/book.jpg" alt="A bright orange sketchbook with the words TAROT on the cover">
+        <img src="/dark-moon-tarot/book.jpg" alt="A bright orange sketchbook with the words TAROT on the cover">
       </div>
       <p>Get yours today</p>
     </div>
