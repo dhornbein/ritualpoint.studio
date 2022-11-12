@@ -64,7 +64,7 @@
           <h3 class="title"><img src="/img/txt_store.png" alt="Store"></h3>
           <p>Art you can wield and wear</p>
           <div class="text-center">
-            <BaseButton href="https://store.ritualpoint.studio/">Buy Shit</BaseButton>
+            <BaseButton href="//store.ritualpoint.studio/">Buy Shit</BaseButton>
           </div>
           <p class="font-weird">Unstick and un-earth wisdom.</p>
         </div>
