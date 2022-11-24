@@ -5,24 +5,7 @@
       <img src="/img/logo.png" alt="Ritual Point" class="h-16">
     </nuxt-link>
 
-    <template v-for="(link, idx) in links" :key="idx">
-      <a :href="link.href" :class="link.class" class="link" v-if="link.href.startsWith('http')">
-        <div class="w-16 flex justify-center">
-          <img :src="link.img" alt="" class="h-16">
-        </div>
-        <div>
-          <p class="text-xl"><strong v-if="link.verb">{{ link.verb }}:</strong> {{ link.title }}</p>
-          <small class="text-sm">{{ link.subtitle }}</small>
-        </div>
-      </a>
-      <nuxt-link :to="link.href" :class="link.class" class="link" v-else>
-        <img :src="link.img" alt="" class="w-16">
-        <div>
-          <p class="text-xl"><strong v-if="link.verb">{{ link.verb }}:</strong> {{ link.title }}</p>
-          <small class="text-sm">{{ link.subtitle }}</small>
-        </div>
-      </nuxt-link>
-    </template>
+    <BaseLink :link="link" v-for="(link, idx) in links" :key="idx" />
 
   </main>
 </template>
@@ -35,7 +18,15 @@ const links = [
     title: 'Merch Store',
     subtitle: 'Art you can wield and wear',
     verb: 'Visit',
-    img: '/img/at.png'
+    img: '/img/shirt.png'
+  },
+  {
+    href: '/pay',
+    class: '!border-fuchsia-600',
+    title: 'me',
+    subtitle: 'want to give me some money?',
+    verb: 'Pay',
+    img: '/img/hand-bill.png'
   },
   {
     href: 'https://airtable.com/shrLSG7NSYbLens0K',
@@ -43,7 +34,7 @@ const links = [
     title: 'Art idea form',
     subtitle: 'Let\'s make art together, fill out this form with your idea',
     verb: 'Submit',
-    img: '/img/skin.png'
+    img: '/img/eye.png'
   },
   {
     href: '/dark-moon-tarot',
@@ -59,7 +50,7 @@ const links = [
     title: 'Free 30 min consult',
     subtitle: 'Discuss a project idea',
     verb: 'Schedule',
-    img: '/img/eye.png'
+    img: '/img/clock.png'
   },
   {
     href: 'https://cal.com/ritualpoint/reading-60',
@@ -77,11 +68,13 @@ const links = [
     verb: 'Schedule',
     img: '/img/nib.png'
   },
+  {
+    href: 'http://instagram.com/ritualpoint',
+    class: '',
+    title: 'Instagram',
+    subtitle: 'Surveillance of the self',
+    verb: '',
+    img: '/img/insta.png'
+  },
 ]
 </script>
-
-<style lang="scss" scoped>
-.link {
-  @apply p-4 rounded border border-white flex gap-4 items-center;
-}
-</style>
