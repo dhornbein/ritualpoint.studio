@@ -18,7 +18,7 @@
 <script setup>
 const links = [
   {
-    href: 'https://buy.stripe.com/00g28m2gPgqHbfy4gj',
+    href: 'https://venmo.com/dddrew',
     class: '',
     title: 'With Venmo',
     subtitle: 'Send money via Venmo to @dddrew (that\'s me)',
