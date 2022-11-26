@@ -108,28 +108,6 @@
 </template>
 
 <style lang="scss">
-@import url("https://use.typekit.net/jsv6drp.css");
-body {
-  @apply bg-stone-900 text-white;
-  font-family: nitti-typewriter-normal, monospace;
-}
-.font-weird {
-  font-family: nitti-typewriter-open, monospace;
-}
-.text {
-  @apply flex flex-wrap flex-grow-0 gap-2 justify-center;
-  img {
-    @apply max-h-8;
-  }
-}
-section {
-  @apply max-w-screen-md mx-auto flex flex-col items-center justify-center min-h-[90vh] py-20;
-}
-
-h2.title {
-  @apply text-2xl;
-}
-
 .offerings {
   @apply flex flex-col justify-between gap-4 p-6 border border-stone-700 rounded-lg hover:border-stone-300 md:max-w-sm w-full;
   .title img {
