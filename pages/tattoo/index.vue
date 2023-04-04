@@ -18,7 +18,7 @@
 <script setup>
 const links = [
   {
-    href: 'https://airtable.com/shrLSG7NSYbLens0K',
+    href: '/tattoo/apply',
     class: '',
     title: 'Tattoo idea form',
     subtitle: 'Let\'s make art together, fill out this form with your idea',

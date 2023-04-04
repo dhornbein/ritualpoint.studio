@@ -16,5 +16,9 @@ export default defineNuxtConfig({
       ],
       link: [{ rel: 'icon', type: 'image/png', href: '/img/logo_black.png' }]
     }
+  },
+  runtimeConfig: {
+    airtable_api: false,
+    imgur_client_id: false,
   }
 })

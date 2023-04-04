@@ -8,6 +8,8 @@
 const props = defineProps(['href','dark'])
 
 function navigate() {
+  if(!props.href) return
+  
   if (props.href.startsWith('//')) {
     window.open(props.href, '_blank')
   } else {
@@ -17,6 +19,7 @@ function navigate() {
 </script>
 
 <style lang="scss">
+.btn,
 button {
   @apply bg-stone-900 text-white p-4 pt-2 text-2xl w-60 h-40 leading-none;
   font-family: nitti-typewriter-open, monospace;
