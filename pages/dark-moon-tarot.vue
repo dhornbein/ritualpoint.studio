@@ -48,6 +48,9 @@
 
 <script setup>
 const desc = 'The Dark Moon Tarot by Ritual Point'
+definePageMeta({
+  alias: ['/dmt','/tarot'],
+})
 useHead({
   title: desc,
   meta: [
