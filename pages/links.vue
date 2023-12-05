@@ -63,7 +63,7 @@ const links = [
   {
     href: 'https://cal.com/ritualpoint/artwork',
     class: '',
-    title: '3 Hour Artwork Session',
+    title: 'Half Day Artwork Session',
     subtitle: '$50 transferable but non-refundable deposit',
     verb: 'Schedule',
     img: '/img/nib.png'

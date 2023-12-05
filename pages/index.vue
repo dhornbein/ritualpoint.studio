@@ -28,7 +28,7 @@
     <img src="/img/squiggle.png" alt="" class="max-w-[150px]">
     <section>
       <h2 class="title mb-4">I make art for the</h2>
-      <a href="#offerings"><img src="/img/skin.png" alt="Skin" class="max-w-md w-full"></a>
+      <nuxt-link to="/tattoo"><img src="/img/skin.png" alt="Skin" class="max-w-md w-full"></nuxt-link>
       <h2 class="title my-8">& read</h2>
       <a href="#tarot"><img src="/img/tarot.png" alt="Tarot" class="max-w-xs w-full"></a>
     </section>
@@ -53,29 +53,29 @@
           <BaseButton href="//cal.com/ritualpoint/consult">Schedule</BaseButton>
           <p class="font-weird">You want something but don't yet know what it is.</p>
         </div> -->
-        <div class="offerings flash">
+        <!-- <div class="offerings flash">
           <h3 class="title"><img src="/img/txt_flash.png" alt="Flash"></h3>
           <p>Choose art from my magic book</p>
           <div class="text-center">
             <BaseButton href="//instagram.com/ritualpoint">@ritualPoint</BaseButton>
           </div>
           <p class="font-weird">You'll know when you see it...</p>
-        </div>
+        </div> -->
         <div class="offerings original">
           <h3 class="title"><img src="/img/txt_original.png" alt="Original"></h3>
-          <p>Co-Create original artwork</p>
+          <p>At Home Tattoo Ritual</p>
           <div class="text-center">
-            <BaseButton href="//cal.com/ritualpoint/consult">Schedule</BaseButton>
+            <BaseButton href="/tattoo">Learn More</BaseButton>
           </div>
-          <p class="font-weird">You know what you want and need help giving it form.</p>
+          <p class="font-weird">A deeply ritualistic tattoo ink session</p>
         </div>
         <div class="offerings divination" id="tarot">
           <h3 class="title"><img src="/img/txt_divination.png" alt="Divination"></h3>
-          <p>Sit for a reading</p>
+          <p>Sit for a tarot reading</p>
           <div class="text-center">
             <BaseButton href="//cal.com/ritualpoint/reading-60">Get Started</BaseButton>
           </div>
-          <p class="font-weird">Unstick and un-earth wisdom.</p>
+          <p class="font-weird">Unstick and un-earth wisdom</p>
         </div>
         <div class="offerings store" id="tarot">
           <h3 class="title"><img src="/img/txt_store.png" alt="Store"></h3>
