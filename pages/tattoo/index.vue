@@ -29,7 +29,7 @@
         <p>My primary offering is a spacious half-day session where I meet you in your space and take time to open a container to co-create the artwork then apply it under your skin. Here's how it works:</p>
         
         <ol class="list-disc pl-8">
-          <li>Start with a consultation, either by text, DM (on Instagram), or a call. Here is where we will see if I'm a good fit and what you have in mind.</li>
+          <li>Start with a consultation, either by text, DM (on <a href="http://instagram.com/ritualpoint" target="_blank">Instagram</a>), or a call. Here is where we will see if I'm a good fit and what you have in mind.</li>
           <li>Once we have an idea of what you want we will set up a meeting time, you'll put down a non-refundable (but transferable) deposit of $50.</li>
           <li>I'll come to your space and we'll get to work.</li>
         </ol>
@@ -92,6 +92,10 @@
 
       <p class="font-bold">In our time together you can always change your mind, stop, or take a break. Anything that comes up is welcome and safe.</p>
 
+      <p>My certificate of Bloodborne Pathogen Training</p>
+
+      <TattooCertificate class="text-align" />
+
       <img src="/tattoo/hand-001.png" alt="">
 
       <h1 class="title">About The Artist</h1>
@@ -101,41 +105,25 @@
 
           <nuxt-link to="/tattoo/consult" class="underline decoration-wavy underline-offset-4 bg-indigo-900/25 text-indigo-300 p-6 text-center rounded">Click here to get started</nuxt-link>
     </div>
-    
-
-    <div class="flex flex-col gap-4 hidden">
-      <BaseLink :link="link" v-for="(link, idx) in links" :key="idx" />
-    </div>
   </main>
 </template>
 
 <script setup>
-const links = [
-  {
-    href: 'https://airtable.com/shrLSG7NSYbLens0K',
-    class: '',
-    title: 'Tattoo idea form',
-    subtitle: 'Let\'s make art together, fill out this form with your idea',
-    verb: 'Submit',
-    img: '/img/eye.png'
-  },
-  {
-    href: 'https://cal.com/ritualpoint/consult',
-    class: '',
-    title: 'Free 30 min consult (optional)',
-    subtitle: 'Discuss a project idea',
-    verb: 'Schedule',
-    img: '/img/clock.png'
-  },
-  {
-    href: 'https://cal.com/ritualpoint/artwork',
-    class: '',
-    title: '3 Hour Artwork Session',
-    subtitle: '$50 transferable but non-refundable deposit',
-    verb: 'Schedule',
-    img: '/img/nib.png'
-  },
-]
+definePageMeta({
+  alias: ['/tat', '/ink'],
+})
+const tattooOGDesc = "Ritualized at home hand poked tattoos and divination"
+useHead({
+  title: tattooOGDesc,
+  meta: [
+    { name: 'description', content: tattooOGDesc },
+    { hid: 'og-desc', property: 'og:description', content: tattooOGDesc },
+    { hid: 'og-title', property: 'og:title', content: 'Hand Poked Tattoo & Divination' },
+    { hid: 'og-image', property: 'og:image', content: 'https://ritualpoint.studio/tattoo/og-tattoo.jpg' },
+    { hid: 'og-url', property: 'og:url', content: 'https://ritualpoint.studio/tattoo' },
+    { hid: 't-type', name: 'twitter:card', content: 'summary_large_image' },
+  ],
+});
 </script>
 
 <style lang="scss">
