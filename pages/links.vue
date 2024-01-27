@@ -45,6 +45,14 @@ const links = [
     img: '/dark-moon-tarot/circle-dark.png'
   },
   {
+    href: '/dark-moon-zine/01',
+    class: '',
+    title: 'The Dark Moon Zine: Issue 01',
+    subtitle: 'The first of 10 zines that will become the Dark Moon Tarot booklet',
+    verb: 'Read',
+    img: '/dmz/01/DMZ_01_final.jpg'
+  },
+  {
     href: 'https://cal.com/ritualpoint/consult',
     class: '',
     title: 'Free 30 min consult',
