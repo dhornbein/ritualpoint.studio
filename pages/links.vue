@@ -13,6 +13,14 @@
 <script setup>
 const links = [
   {
+    href: 'patreon.com/RitualPoint',
+    class: 'bg-white text-stone-900',
+    title: 'Patreon',
+    subtitle: 'Follow updates from me for free, become a patron and get exclusive content, the Dark Moon Tarot Deck, and special deals!',
+    verb: 'Join',
+    img: '/img/logo_black.png'
+  },
+  {
     href: 'https://store.ritualpoint.studio/',
     class: '',
     title: 'Merch Store',
@@ -29,19 +37,11 @@ const links = [
     img: '/img/hand-bill.png'
   },
   {
-    href: 'https://airtable.com/shrLSG7NSYbLens0K',
-    class: '',
-    title: 'Art idea form',
-    subtitle: 'Let\'s make art together, fill out this form with your idea',
-    verb: 'Submit',
-    img: '/img/eye.png'
-  },
-  {
     href: '/dark-moon-tarot',
-    class: 'bg-white text-stone-900',
-    title: 'Dark Moon Tarot',
+    class: '',
+    title: 'The Dark Moon Tarot',
     subtitle: 'Hand drawn tarot deck',
-    verb: 'Pre-Order',
+    verb: 'Discover',
     img: '/dark-moon-tarot/circle-dark.png'
   },
   {

@@ -16,17 +16,15 @@
     <!-- page advertising the pre-sale dark moon tarot with a link to stripe checkout page there is an $85 option and a $105 option which has more "vibes" than the other -->
     <div class="flex flex-col items-center gap-8 mb-16">
       <h1 class="text-4xl font-bold text-center mt-8 max-w-screen-md"><img src="/dark-moon-tarot/logo.png" alt="Dark Moon Tarot"></h1>
-      <h2 class="title font-weird">Pre-sale</h2>
       <p class="text-center">Click the card to flip</p>
       <div class="card-pull">
         <Tarot-Card />
       </div>
-      <p class="max-w-prose">The Dark Moon Tarot is a 78 card deck hand drawn over a year in this orange sketchbook. This deck is a celebration of the moon. The booklet is in production and the cards are being printed, you can support this project by pre-ordering.</p>
-      <h2 class="title font-weird">Pre-Order</h2>
-      <p class="max-w-prose">Buy the idea of this deck. Imagine a beautifully printed deck with a guidebook and an exquisite box. Pre-order the <strong>mundane version</strong> and you'll get the deck and booklet when it is ready. Order the <strong>deluxe version</strong> for that and a special surprise (plus you help subsidize for others).</p>
+      <p class="max-w-prose">The Dark Moon Tarot is a 78 card deck hand drawn over a year in this orange sketchbook. This deck is a celebration of the moon. The booklet is in production and the cards are being printed, you can support this project by joining my patreon (there is a free tier) to follow along with the development.</p>
+      <p class="max-w-prose">The Deck and Booklet should be ready for sale early 2025. Most patron tiers will get a copy of the tarot deck when it comes out.</p>
       <div class="flex flex-wrap items-center justify-center">
-        <BaseButton href="//buy.stripe.com/bIY9AO08Ha2j6Zi3cd" :dark="true">Mundane $56</BaseButton>
-        <BaseButton href="//buy.stripe.com/aEUeV8dZx4HZ1EY9AC" :dark="true">Deluxe $116</BaseButton>
+        <BaseButton href="//www.patreon.com/ritualpoint/" :dark="true">Patreon</BaseButton>
+        <BaseButton href="//instagram.com/ritualpoint" :dark="true">Instagram</BaseButton>
       </div>
       <div class="flex flex-wrap justify-center items-center text-center">
         <div><img src="/deck-mock/03_card_sm.png" alt="Empress">&#8546; The Empress</div>
