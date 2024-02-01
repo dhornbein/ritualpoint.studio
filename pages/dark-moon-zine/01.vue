@@ -43,6 +43,17 @@
 </style>
 
 <script setup>
+const desc = 'The Dark Moon Zine Issue 01 by Ritual Point'
+useHead({
+  title: desc,
+  meta: [
+    { name: 'description', content: desc },
+    { hid: 'og-desc', property: 'og:description', content: desc },
+    { hid: 'og-title', property: 'og:title', content: 'The Dark Moon Zine Issue 01' },
+    { hid: 'og-image', property: 'og:image', content: 'https://ritualpoint.studio/dmz/og-zine.jpg' },
+    { hid: 'og-url', property: 'og:url', content: 'https://ritualpoint.studio/dmz/01' },
+  ],
+})
 const invert = ref(false)
 const dmz01 = [
   [

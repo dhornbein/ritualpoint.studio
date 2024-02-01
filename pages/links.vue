@@ -20,14 +20,30 @@ const links = [
     verb: 'Join',
     img: '/img/logo_black.png'
   },
+  // {
+  //   href: '/dark-moon-zine/01',
+  //   class: '',
+  //   title: 'The Dark Moon Zine: Issue 01',
+  //   subtitle: 'The first of 10 zines that will become the Dark Moon Tarot booklet',
+  //   verb: 'Read',
+  //   img: '/dmz/01/DMZ_01_final.jpg'
+  // },
   {
-    href: 'https://store.ritualpoint.studio/',
+    href: '//forms.gle/JMhF7712UwV4Hps37',
     class: '',
-    title: 'Merch Store',
-    subtitle: 'Art you can wield and wear',
-    verb: 'Visit',
-    img: '/img/shirt.png'
+    title: 'The Dark Moon Zine: Issue 01',
+    subtitle: 'Get the zine mailed to you, give me your address here',
+    verb: 'Mail Me',
+    img: '/dmz/01/DMZ_01_final16.jpg'
   },
+  // {
+  //   href: 'https://store.ritualpoint.studio/',
+  //   class: '',
+  //   title: 'Merch Store',
+  //   subtitle: 'Art you can wield and wear',
+  //   verb: 'Visit',
+  //   img: '/img/shirt.png'
+  // },
   {
     href: '/pay',
     class: '!border-fuchsia-600',
@@ -43,14 +59,6 @@ const links = [
     subtitle: 'Hand drawn tarot deck',
     verb: 'Discover',
     img: '/dark-moon-tarot/circle-dark.png'
-  },
-  {
-    href: '/dark-moon-zine/01',
-    class: '',
-    title: 'The Dark Moon Zine: Issue 01',
-    subtitle: 'The first of 10 zines that will become the Dark Moon Tarot booklet',
-    verb: 'Read',
-    img: '/dmz/01/DMZ_01_final.jpg'
   },
   {
     href: 'https://cal.com/ritualpoint/consult',
