@@ -10,7 +10,10 @@
 
     <BaseLink :link="link" v-for="(link, idx) in links" :key="idx" class="w-full" />
 
-    <p><a href="mailto:drew@ritualpoint.studio">drew@ritualpoint.studio</a></p>
+    <div class="text-center">
+      <p><a href="mailto:hello@ritualpoint.studio">hello@ritualpoint.studio</a></p>
+      <p><a href="instagram.com/ritualpoint"><img src="/img/insta.png" alt="Insta" class="h-4 inline-block"> @RitualPoint</a></p>
+    </div>
 
   </main>
 </template>
@@ -34,20 +37,20 @@ const links = [
     img: '/img/credit-card.png'
   },
   {
+    href: 'patreon.com/RitualPoint',
+    class: 'bg-white text-stone-900',
+    title: 'Patreon',
+    subtitle: 'Follow updates from me for free, become a patron and get exclusive content, the Dark Moon Tarot Deck, and special deals on my art!',
+    verb: 'Join',
+    img: '/img/logo_black.png'
+  },
+  {
     href: 'https://store.ritualpoint.studio/',
     class: '',
     title: 'Merch Store',
     subtitle: 'Art you can wield and wear',
     verb: 'Visit',
     img: '/img/shirt.png'
-  },
-  {
-    href: '/dark-moon-tarot',
-    class: 'bg-white text-stone-900',
-    title: 'Dark Moon Tarot',
-    subtitle: 'Hand drawn tarot deck',
-    verb: 'Pre-Order',
-    img: '/dark-moon-tarot/circle-dark.png'
   },
 ]
 </script>
