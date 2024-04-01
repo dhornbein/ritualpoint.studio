@@ -29,6 +29,7 @@
           <nuxt-link class="p-2 border border-white rounded text-center" to="/tattoo"><span class="sm:inline hidden">Hand Poked</span> Tattoos</nuxt-link>
           <nuxt-link class="p-2 border border-white rounded text-center" to="/dmt"><span class="sm:inline hidden">Dark Moon</span> Tarot</nuxt-link>
           <nuxt-link class="p-2 border border-white rounded text-center" to="/dmz"><span class="sm:inline hidden">Dark Moon</span> Zine</nuxt-link>
+          <nuxt-link class="p-2 border border-white rounded text-center" to="/reading"><span class="sm:inline hidden">Tarot</span> Readings</nuxt-link>
         </nav>
 
         <p><a href="mailto:hello@ritualpoint.studio">hello@ritualpoint.studio</a></p>
