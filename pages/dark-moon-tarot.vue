@@ -38,7 +38,7 @@
       </a>
       <p>Questions? <a href="mailto:drew@ritualpoint.studio">drew@ritualpoint.studio</a></p>
       <div class="bg-white w-full p-8 flex justify-center">
-        <img src="/dark-moon-tarot/book.jpg" class="max-w-lg" alt="A bright orange sketchbook with the words TAROT on the cover">
+        <img src="/dark-moon-tarot/book.jpg" class="max-w-lg w-full" alt="A bright orange sketchbook with the words TAROT on the cover">
       </div>
     </div>
   </main>
