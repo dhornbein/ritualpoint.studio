@@ -13,7 +13,7 @@
 <script setup>
 const links = [
   {
-    href: 'patreon.com/RitualPoint',
+    href: '//patreon.com/RitualPoint',
     class: 'bg-white text-stone-900',
     title: 'Patreon',
     subtitle: 'Follow updates from me for free, become a patron and get exclusive content, the Dark Moon Tarot Deck, and special deals!',
