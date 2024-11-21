@@ -1,7 +1,7 @@
 <template>
   <main class="container mx-auto p-8 flex flex-col gap-4">
 
-    <nuxt-link to="/tattoo" class="underline decoration-wavy underline-offset-4 text-xl">Go To Tattoo Page</nuxt-link>
+    <nuxt-link to="/tattoo" class="link-wavy text-xl">Go To Tattoo Page</nuxt-link>
     
     <h1 class="title">Tattoo Consultation</h1>
 
@@ -13,7 +13,7 @@
 
     <div class="max-w-prose mb-4 flex gap-4 flex-col text-justify">
 
-      <nuxt-link to="/tattoo" class="underline decoration-wavy underline-offset-4 text-xl">👈🏻 Go To Tattoo Page to learn more</nuxt-link>
+      <nuxt-link to="/tattoo" class="link-wavy text-xl">👈🏻 Go To Tattoo Page to learn more</nuxt-link>
     </div>
   </main>
 </template>

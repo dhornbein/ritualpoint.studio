@@ -1,7 +1,7 @@
 <template>
   <div>
     <main class="container mx-auto p-8 flex flex-col gap-4">
-      <nuxt-link to="/tattoo" class="underline decoration-wavy underline-offset-4 text-xl hover:text-pink-400">&#9754;
+      <nuxt-link to="/tattoo" class="link-wavy text-xl hover:text-pink-400">&#9754;
         Go
         To Tattoo
         Page</nuxt-link>
@@ -18,9 +18,9 @@
       <BaseLink :link="link" v-for="(link, idx) in links" :key="idx" />
       <p>Need to get in touch?</p>
       <ul>
-        <li>Email me at <a class="underline decoration-wavy underline-offset-4 text-indigo-300"
+        <li>Email me at <a class="link-wavy text-indigo-300"
             href="mailto:redeem@ritualpoint.studio">Drew@RitualPoint.Studio</a></li>
-        <li>DM me on instagram <a class="underline decoration-wavy underline-offset-4 text-indigo-300"
+        <li>DM me on instagram <a class="link-wavy text-indigo-300"
             href="https://www.instagram.com/ritualpoint">@RitualPoint</a></li>
       </ul>
       <div class="flex justify-center items-center flex-col gap-6 my-6">

@@ -3,7 +3,7 @@
     <h1>Found</h1>
     <p v-if="slug">Found page: {{slug}}</p>
     
-    <nuxt-link to="/" class="underline decoration-wavy underline-offset-4">Go Home</nuxt-link>
+    <nuxt-link to="/" class="link-wavy">Go Home</nuxt-link>
   </div>
 </template>
 

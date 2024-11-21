@@ -4,7 +4,7 @@
 
     <div class="flex flex-col gap-8 w-full lg:w-auto">
       <div class="tattoo-body">
-        <nuxt-link v-if="!embedded" to="/" class="underline decoration-wavy underline-offset-4 text-xl">Go
+        <nuxt-link v-if="!embedded" to="/" class="link-wavy text-xl">Go
           Home</nuxt-link>
         <h1 class="title md:!text-4xl">At Home Divine Tattoo</h1>
         <p>Humans have been adorning our bodies with ink for millennia. I am carrying on the tradition of hand-poked
@@ -35,7 +35,7 @@
             <li>I'll come to your space and we'll get to work.</li>
           </ol>
           <nuxt-link v-if="!embedded" to="/tattoo/consult"
-            class="underline decoration-wavy underline-offset-4 bg-indigo-900/25 text-indigo-300 p-6 text-center rounded">Click
+            class="link-wavy bg-indigo-900/25 text-indigo-300 p-6 text-center rounded">Click
             here to get started</nuxt-link>
         </div>
         <div class="grid sm:grid-cols-2 gap-2">
@@ -73,7 +73,7 @@
         <img src="/tattoo/hand-002.png" alt="">
         <h2 class="title">Comfort</h2>
         <p>A relaxed body takes and holds ink better. I want you to feel <span
-            class="underline decoration-wavy underline-offset-4">soooo</span> comfortable throughout this experience. By
+            class="link-wavy">soooo</span> comfortable throughout this experience. By
           hosting the ritual in your home (or a friend's home) we can escape the tension and intimidation of a tattoo
           studio environment.</p>
         <p>Hand poked tattoos are often much less painful than using a machine.</p>
@@ -105,7 +105,7 @@
 
         <img src="/tattoo/self-portrait.jpg" alt="">
         <nuxt-link v-if="!embedded" to="/tattoo/consult"
-          class="underline decoration-wavy underline-offset-4 bg-indigo-900/25 text-indigo-300 p-6 text-center rounded">Click
+          class="link-wavy bg-indigo-900/25 text-indigo-300 p-6 text-center rounded">Click
           here to get started</nuxt-link>
       </div>
     </div>
@@ -181,7 +181,7 @@ const portfolio = [
     @apply rounded;
   }
   a {
-    @apply underline decoration-wavy underline-offset-4 text-indigo-300 hover:text-pink-400;
+    @apply link-wavy text-indigo-300 hover:text-pink-400;
   }
 }
 </style>
