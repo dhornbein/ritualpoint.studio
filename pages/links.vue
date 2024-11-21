@@ -13,7 +13,7 @@
 <script setup>
 const links = [
   {
-    href: '//www.etsy.com/shop/RitualPoint',
+    href: '//ritualpoint.etsy.com/',
     class: 'bg-orange-400 text-black',
     title: 'Etsy Shop',
     subtitle: 'Buy the Dark Moon Tarot! ALso browse my zines and prints',

@@ -31,9 +31,9 @@
       
       
         <nav class="flex justify-around gap-4 p-4 relative">
-          <nuxt-link class="p-2 border border-white rounded text-center" to="/tattoo"><span class="sm:inline hidden">Hand Poked</span> Tattoos</nuxt-link>
           <nuxt-link class="p-2 border border-white rounded text-center" to="/dmt"><span class="sm:inline hidden">Dark Moon</span> Tarot</nuxt-link>
           <nuxt-link class="p-2 border border-white rounded text-center" to="/dmz"><span class="sm:inline hidden">Dark Moon</span> Zine</nuxt-link>
+          <a class="p-2 border border-white rounded text-center" href="https://ritualpoint.etsy.com/"><span class="sm:inline hidden">Etsy</span> Store</a>
         </nav>
     </section>
 

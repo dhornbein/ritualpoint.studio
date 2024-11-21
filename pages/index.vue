@@ -1,7 +1,7 @@
 <template>
   <div class="flex flex-col items-center p-4 relative">
     <nav class="absolute flex md:justify-between justify-around w-full px-2">
-      <a href="https://store.ritualpoint.studio/" target="_blank" class="flex items-center gap-2">
+      <a href="https://ritualpoint.etsy.com/" target="_blank" class="flex items-center gap-2">
         <img src="/img/txt_store.png" alt="Store" class="h-6 hidden sm:inline">
         <img src="/img/icon-flower.png" alt="" class="h-10">
       </a>
@@ -28,56 +28,20 @@
       </a>
 
       <nav class="flex justify-around gap-4 p-4 relative">
-        <nuxt-link class="p-2 border border-white rounded text-center" to="/tattoo"><span class="sm:inline hidden">Hand
-            Poked</span> Tattoos</nuxt-link>
         <nuxt-link class="p-2 border border-white rounded text-center" to="/dmt"><span class="sm:inline hidden">Dark
             Moon</span> Tarot</nuxt-link>
         <nuxt-link class="p-2 border border-white rounded text-center" to="/dmz"><span class="sm:inline hidden">Dark
             Moon</span> Zine</nuxt-link>
         <nuxt-link class="p-2 border border-white rounded text-center" to="/reading"><span
             class="sm:inline hidden">Tarot</span> Readings</nuxt-link>
+        <a class="p-2 border border-white rounded text-center" href="https://ritualpoint.etsy.com/"><span
+            class="sm:inline hidden">Etsy</span> Store</a>
       </nav>
 
-      <p><a href="mailto:hello@ritualpoint.studio">hello@ritualpoint.studio</a></p>
+      <p><a class="link-wavy text-pink-300" href="mailto:hello@ritualpoint.studio">hello@ritualpoint.studio</a></p>
     </section>
     <img src="/img/squiggle.png" alt="" class="max-w-[150px]">
-    <section>
-      <h2 class="title mb-4">I make art for the</h2>
-      <nuxt-link to="/tattoo"><img src="/img/skin.png" alt="Skin" class="max-w-md w-full"></nuxt-link>
-      <h2 class="title my-8">& read</h2>
-      <a href="#tarot"><img src="/img/tarot.png" alt="Tarot" class="max-w-xs w-full"></a>
-    </section>
-
-    <img src="/img/lines.png" alt="" class="max-w-[150px]">
-    <section class="max-w-full">
-      <div class="max-w-prose">
-        <h1 id="offerings" class="title mb-4"><img src="/img/txt_offerings.png" alt="Offerings"></h1>
-      </div>
-      <div class="flex flex-wrap justify-center gap-4 my-10">
-        <div class="offerings original">
-          <h3 class="title font-weird text-4xl">Ritual Tattoo</h3>
-          <p>At Home Ritualized Stick and Poke tattoo</p>
-          <div class="text-center">
-            <BaseButton href="/tattoo">Learn More</BaseButton>
-          </div>
-        </div>
-        <div class="offerings divination" id="tarot">
-          <h3 class="title font-weird text-4xl">Tarot Reading</h3>
-          <p>Schedule a 1 hour virtual reading</p>
-          <div class="text-center">
-            <BaseButton href="//cal.com/ritualpoint/reading-60">Get Started</BaseButton>
-          </div>
-        </div>
-        <div class="offerings divination" id="tarot">
-          <h3 class="title font-weird text-4xl">Free Consulting</h3>
-          <p>Not sure yet? Schedule a quick call with me.</p>
-          <div class="text-center">
-            <BaseButton href="//cal.com/ritualpoint/consult">Get Started</BaseButton>
-          </div>
-        </div>
-      </div>
-    </section>
-    <img src="/img/lines.png" alt="" class="max-w-[150px] rotate-180 ">
+    
     <section>
       <nuxt-link to="/dark-moon-tarot" class="text-2xl font-weird text-center">
         <h2 class="title mb-8">Discover my hand drawn tarot deck</h2>
