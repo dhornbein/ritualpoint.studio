@@ -4,10 +4,7 @@
       <div :class="{'rotate-180':invert}">Issue 01</div>
       
       <a @click="invert = !invert" class="cursor-pointer">Flip ({{ invert }})</a>
-      <div class="flex gap-2">
-        <a class="underline decoration-wavy underline-offset-4" href="/dmz/01/DMZ_01_final_optomized.pdf" target="_blank">Get PDF</a>
-        <a class="underline decoration-wavy underline-offset-4" href="/dmz/01/DMZ_01_Book_print.pdf" target="_blank">Get PDF for PRINT</a>
-      </div>
+      <a href="https://www.etsy.com/listing/1821742641/dark-moon-zine-issue-01-beginnings-tarot" target="_blank" class="link-wavy text-pink-400 float-right" >$ Buy Copy</a>
     </nav>
     <div class="zine" :class="{flip: invert}">
       <div class="spread" v-for="(spread, index) in dmz01" :key="index">

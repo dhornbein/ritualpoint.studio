@@ -1,8 +1,7 @@
 <template>
   <div class="flex flex-col min-h-screen">
     <nav class="p-2 border-b border-white">
-      <nuxt-link to="/" class="underline decoration-wavy underline-offset-4">Go Home</nuxt-link> | <nuxt-link to="/dmz">Dark Moon Zine</nuxt-link> <nuxt-link to="/dmz/01" class="underline decoration-wavy underline-offset-4">Issue 01</nuxt-link> <nuxt-link to="/dmz/02" class="underline decoration-wavy underline-offset-4">Issue 02</nuxt-link> | 
-          <a class="underline decoration-wavy underline-offset-4 text-pink-400" href="https://forms.gle/JMhF7712UwV4Hps37" target="_blank">Get a copy in the mail</a>
+      <nuxt-link to="/" class="link-wavy">Go Home</nuxt-link> | <nuxt-link to="/dmz">Dark Moon Zine</nuxt-link> <nuxt-link to="/dmz/01" class="link-wavy">Issue 01</nuxt-link> <nuxt-link to="/dmz/02" class="link-wavy">Issue 02</nuxt-link>
     </nav>
     <NuxtPage />
   </div>

@@ -4,6 +4,8 @@
       <div :class="{'rotate-180':invert}">Issue 02</div>
       
       <a @click="invert = !invert" class="cursor-pointer">Flip ({{ invert }})</a>
+
+      <a href="https://www.etsy.com/listing/1815741956/dark-moon-zine-issue-02-passion-wands" target="_blank" class="link-wavy text-pink-400 float-right" >$ Buy Copy</a>
     </nav>
     <div class="zine" :class="{flip: invert}">
       <div class="spread" v-for="(spread, index) in dmz01" :key="index">
