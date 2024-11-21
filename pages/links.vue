@@ -13,6 +13,14 @@
 <script setup>
 const links = [
   {
+    href: '//www.etsy.com/shop/RitualPoint',
+    class: 'bg-orange-400 text-black',
+    title: 'Etsy Shop',
+    subtitle: 'Buy the Dark Moon Tarot! ALso browse my zines and prints',
+    verb: 'Visit',
+    img: '/img/icon-flower.png'
+  },
+  {
     href: '//patreon.com/RitualPoint',
     class: 'bg-white text-stone-900',
     title: 'Patreon',
@@ -20,21 +28,13 @@ const links = [
     verb: 'Join',
     img: '/img/logo_black.png'
   },
-  // {
-  //   href: '/dark-moon-zine/01',
-  //   class: '',
-  //   title: 'The Dark Moon Zine: Issue 01',
-  //   subtitle: 'The first of 10 zines that will become the Dark Moon Tarot booklet',
-  //   verb: 'Read',
-  //   img: '/dmz/01/DMZ_01_final.jpg'
-  // },
   {
-    href: '//forms.gle/JMhF7712UwV4Hps37',
+    href: '/dark-moon-zine/01',
     class: '',
     title: 'The Dark Moon Zine: Issue 01',
-    subtitle: 'Get the zine mailed to you, give me your address here',
-    verb: 'Mail Me',
-    img: '/dmz/01/DMZ_01_final16.jpg'
+    subtitle: 'The first of 10 zines that will become the Dark Moon Tarot booklet',
+    verb: 'Read',
+    img: '/dmz/01/DMZ_01_final.jpg'
   },
   // {
   //   href: 'https://store.ritualpoint.studio/',
@@ -75,14 +75,6 @@ const links = [
     subtitle: 'Experience an intuitive tarot reading',
     verb: 'Schedule',
     img: '/img/tarot.png'
-  },
-  {
-    href: 'https://cal.com/ritualpoint/artwork',
-    class: '',
-    title: 'Half Day Artwork Session',
-    subtitle: '$50 transferable but non-refundable deposit',
-    verb: 'Schedule',
-    img: '/img/nib.png'
   },
   {
     href: 'http://instagram.com/ritualpoint',

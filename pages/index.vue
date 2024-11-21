@@ -3,7 +3,7 @@
     <nav class="absolute flex md:justify-between justify-around w-full px-2">
       <a href="https://store.ritualpoint.studio/" target="_blank" class="flex items-center gap-2">
         <img src="/img/txt_store.png" alt="Store" class="h-6 hidden sm:inline">
-        <img src="/img/shirt.png" alt="" class="h-10">
+        <img src="/img/icon-flower.png" alt="" class="h-10">
       </a>
       <nuxt-link to="/links" class="flex flex-col items-center gap-2">
         <span class="font-weird text-sm">Link Tree</span>

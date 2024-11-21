@@ -26,7 +26,7 @@ const link = props.link
 
 <style lang="scss" scoped>
 .link {
-  @apply p-4 rounded border border-white flex gap-4 items-center;
+  @apply p-4 rounded border flex gap-4 items-center;
   .link__image {
     @apply w-16 h-16 flex justify-center flex-shrink-0;
   }
