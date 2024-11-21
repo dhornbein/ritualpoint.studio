@@ -9,8 +9,8 @@
   },
   "devDependencies": {
     "@nuxtjs/tailwindcss": "^6.11.1",
-    "nuxt": "^3.9.3",
-    "nuxt-gtag": "^1.1.2",
-    "sass": "^1.60.0"
+    "nuxt": "^3.14.1592",
+    "nuxt-gtag": "^3.0.2",
+    "sass": "^1.81.0"
   }
 }
