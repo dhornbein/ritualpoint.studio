@@ -1,5 +1,5 @@
 <template>
-  <div class="flex flex-col items-center p-4 relative">
+  <div class="flex flex-col items-center p-8 relative">
     <nav class="absolute flex md:justify-between justify-around w-full px-2">
       <a href="https://ritualpoint.etsy.com/" target="_blank" class="flex items-center gap-2">
         <img src="/img/txt_store.png" alt="Store" class="h-6 hidden sm:inline">
@@ -41,6 +41,8 @@
       <p><a class="link-wavy text-pink-300" href="mailto:hello@ritualpoint.studio">hello@ritualpoint.studio</a></p>
     </section>
     <img src="/img/squiggle.png" alt="" class="max-w-[150px]">
+
+    <nuxt-link to="/dmt" id="dmt-box" class="filter mix-blend-exclusion mt-8"><img class="max-h-[80vh] invert" src="/dark-moon-tarot/dmt-product-box-open-cards.jpg" alt="Dark Moon Tarot"></nuxt-link>
     
     <section>
       <nuxt-link to="/dark-moon-tarot" class="text-2xl font-weird text-center">
@@ -69,22 +71,28 @@
     <img src="/img/eye.png" alt="" class="max-w-[150px] my-20">
     <section>
       <h2 class="title font-weird mb-4">Who Am I?</h2>
-      <p>I notice the moon's phases. I draw from the well of inspiration. I'm just some guy with ink stained hands. I
-        pray to the trickster god. I laugh myself into cracking screams. I believe in</p>
-      <img src="/img/txt_art.png" alt="Art" class="mt-8">
+      <p>I'm someone somewhere making art</p>
+
+      <img src="/img/office-zine-wall.JPG" alt="A wall shot in a depth of field blur by a wall of zines and paper held hostage in clipboards">
+      
+
     </section>
 
     <section>
       <blockquote class="max-w-prose">
         We live in capitalism. Its power seems inescapable. So did the divine right of kings. Any human power can be
         resisted
-        and changed by human beings. Resistance and change often begin in art.
+        and changed by human beings. Resistance and change often begin in <img src="/img/txt_art.png" alt="Art" class="mt-8">
         <cite class="float-right mt-4">&mdash; Ursula K. Le Guin</cite>
       </blockquote>
 
     </section>
 
     <img src="/img/sword.png" alt="The sword which I battle capitalism" class="max-h-[400px] my-24">
+
+    <p>get in touch</p>
+    <p><a class="link-wavy text-pink-300" href="mailto:hello@ritualpoint.studio">hello@ritualpoint.studio</a></p>
+    <hr class="mt-20 mb-80">
   </div>
 </template>
 

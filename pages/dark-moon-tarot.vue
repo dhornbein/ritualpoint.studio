@@ -1,21 +1,20 @@
 <template>
   <main class="w-full bg-white text-stone-900 p-8">
     <!-- ritual point logo link to home -->
-    <div class="flex justify-between items-center text-center relative my-8">
-      <nuxt-link to="/" class="absolute left-1/2 transform -translate-x-1/2 flex flex-col items-center">
+    <div class="flex justify-between items-center text-center fixed -mt-4 -ml-4 sm:ml-0 sm:mt-0">
+      <nuxt-link to="/" class="">
         <img
-          class="w-24"
+          class="w-8 sm:w-14 md:w-24"
           src="/img/logo_black.png"
           alt="Ritual Point"
         /> home
       </nuxt-link>
-      <a href="https://www.etsy.com/listing/1817759255" target="_blank" class="link-wavy">Buy the Deck</a>
       </div>
 
     <div class="flex flex-col items-center gap-8 mb-16">
 
       <div>
-        <img class="max-h-[80vh]" src="/dark-moon-tarot/dmt-product-box-open-cards.jpg" alt="Dark Moon Tarot">
+        <nuxt-link to="/#dmt-box"><img class="max-h-[80vh]" src="/dark-moon-tarot/dmt-product-box-open-cards.jpg" alt="Dark Moon Tarot"></nuxt-link>
         <hr class="border-t-2 border-black border-dotted my-6 w-1/3 mx-auto">
         <div class="w-0 h-0 border-l-8 border-r-8 border-t-8 border-transparent border-t-black mx-auto"></div>
 
@@ -34,12 +33,12 @@
         <Tarot-Card />
       </div>
 
-      <img class="max-h-[80vh] -mt-40" src="/dark-moon-tarot/dmt-product-cards.jpg" alt="a deck of dark moon tarot cards, face down they are black with a white chaotic line forming a dark circle in the center">
+      <img class="max-h-[80vh] sm:-mt-40 -mt-20" src="/dark-moon-tarot/dmt-product-cards.jpg" alt="a deck of dark moon tarot cards, face down they are black with a white chaotic line forming a dark circle in the center">
       
       <div class="flex items-center justify-center flex-wrap">
         <div class="p-8"><img src="/dark-moon-tarot/book.jpg" class="max-w-lg w-full" alt="A bright orange sketchbook with the words TAROT on the cover"></div>
         <div class="flex flex-col gap-8" >
-          <p class="max-w-prose">The <strong>Dark Moon Tarot</strong> was hand-drawn over the course of a year in an orange sketchbook, each card capturing the space between light and shadow, clarity and mystery. This deck is a celebration of the moon, its phases, and the feminine time that guides us through cycles of transformation.</p>
+          <p class="max-w-prose">The <strong>Dark Moon Tarot</strong> was hand-drawn over the course of a year in an orange sketchbook. What started as a daily practice turned into my masterpiece. This deck is a celebration of the moon, its phases, and the feminine time that guides us through cycles of transformation.</p>
           <p><a href="https://www.etsy.com/listing/1817759255" class="text-2xl link-wavy">On Sale Now</a></p>
           <p class="max-w-prose">The accompanying booklet is in development, weaving together art, reflections, and the unintelligible truths behind the cards. The booklet is expected to be ready for sale in early 2025.</p>
         </div>
@@ -56,13 +55,13 @@
           Join me on Patreon and become part of the evolving story behind the <em>Dark Moon Tarot</em>. As a patron, you'll receive exclusive perks, including discounts on most of the things I create—tarot decks, prints, zines, and more.
         </p>
         <p class="text-lg mb-4">
-          Patreon isn't just a way to support my work; it's a shared space where we explore the artist's journey together. I share the inside process of monumental projects like creating this deck, offering insights into the creative challenges, breakthroughs, and rituals that bring such work to life.
+          Patreon isn't just a way to support my work; it's a shared space where we explore the artist's journey through (the mostly) agony and (sometimes, as a treat) ecstasy together. I share the inside process of monumental projects like creating this deck, offering insights into the creative challenges, breakthroughs, and rituals that bring such work to life.
         </p>
         <p class="text-lg mb-4">
-          I also use Patreon to support <strong>your</strong> creative and spiritual growth. Whether through tips, reflections, or tools, I aim to inspire and empower you to tackle your own big, transformational projects. Together, we can embrace the cycles of creation, from the dark moon of beginnings to the radiant light of completion.
+          I also use Patreon to support <strong>your</strong> creative [insert inspiring tagline here]. Whether through [vague encouragement], [slightly mysterious but intriguing offering], or [overly ambitious promise I hope to keep], I aim to [lofty goal that feels both genuine and a little too much]. Together, we can [dramatic metaphor about creation cycles that somehow feels poetic and oddly accurate].
         </p>
         <p class="text-lg">
-          Your support helps sustain independent art, magic, and creativity. Join me, and let's make something extraordinary together.
+          Your support helps sustain independent art, magic, and creativity. Join me, and let's get unintelligible together.
         </p>
       </div>
 
