@@ -5,6 +5,11 @@
       <img src="/img/logo.png" alt="Ritual Point" class="h-16">
     </nuxt-link>
 
+    <nuxt-link to="/dmt" class="max-h-[60vh] rounded-md border border-gray-400 relative overflow-hidden">
+      <p class="absolute text-5xl drop-shadow-lg font-bold mix-blend-difference">Dark Moon Tarot is For Sale LEARN MORE</p>
+      <img class="object-cover" src="/dark-moon-tarot/dmt-product-box-open-cards.jpg" alt="Dark Moon Tarot">
+    </nuxt-link>
+
     <BaseLink :link="link" v-for="(link, idx) in links" :key="idx" />
 
   </main>
@@ -51,14 +56,6 @@ const links = [
     subtitle: 'want to give me some money?',
     verb: 'Pay',
     img: '/img/hand-bill.png'
-  },
-  {
-    href: '/dark-moon-tarot',
-    class: '',
-    title: 'The Dark Moon Tarot',
-    subtitle: 'Hand drawn tarot deck',
-    verb: 'Discover',
-    img: '/dark-moon-tarot/circle-dark.png'
   },
   {
     href: 'https://cal.com/ritualpoint/consult',
