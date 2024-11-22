@@ -39,8 +39,7 @@
         <div class="p-8"><img src="/dark-moon-tarot/book.jpg" class="max-w-lg w-full" alt="A bright orange sketchbook with the words TAROT on the cover"></div>
         <div class="flex flex-col gap-8" >
           <p class="max-w-prose">The <strong>Dark Moon Tarot</strong> was hand-drawn over the course of a year in an orange sketchbook. What started as a daily practice turned into my masterpiece. This deck is a celebration of the moon, its phases, and the feminine time that guides us through cycles of transformation.</p>
-          <p><a href="https://www.etsy.com/listing/1817759255" class="text-2xl link-wavy">On Sale Now</a></p>
-          <p class="max-w-prose">The accompanying booklet is in development, weaving together art, reflections, and the unintelligible truths behind the cards. The booklet is expected to be ready for sale in early 2025.</p>
+          <h2 class="text-2xl">The Deck <a href="https://www.etsy.com/listing/1817759255" class="text-2xl link-wavy">On Sale Now</a></h2>
         </div>
       </div>
 
