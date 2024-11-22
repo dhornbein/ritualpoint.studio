@@ -16,8 +16,10 @@
     </nav>
     <title>Ritual Point Art & Divination</title>
     <section>
-      <nuxt-link to="/links"><img src="/img/logo_mark.png" alt=""
-          class="w-[50vw] mx-auto mb-10 max-w-[30vh]"></nuxt-link>
+      <nuxt-link to="/links">
+        <img src="/img/logo_mark.png" alt=""
+          class="w-[50vw] mx-auto mb-10 max-w-[30vh]">
+      </nuxt-link>
       <h1><img src="/img/logo.png" alt="Ritual Point"></h1>
       <div>
         <h2 class="text"><img src="/img/txt_art.png" alt="Art"> <img src="/img/txt_plus.png" alt="+"> <img
@@ -27,7 +29,7 @@
         <img src="/img/insta.png" alt="Instagram" class="max-h-8 inline-block"> Instagram
       </a>
 
-      <nav class="flex justify-around gap-4 p-4 relative">
+      <nav class="flex flex-wrap justify-around gap-4 p-4 relative">
         <nuxt-link class="p-2 border border-white rounded text-center" to="/dmt"><span class="sm:inline hidden">Dark
             Moon</span> Tarot</nuxt-link>
         <nuxt-link class="p-2 border border-white rounded text-center" to="/dmz"><span class="sm:inline hidden">Dark
@@ -45,9 +47,9 @@
     <nuxt-link to="/dmt" id="dmt-box" class="filter mix-blend-exclusion mt-8"><img class="max-h-[80vh] invert" src="/dark-moon-tarot/dmt-product-box-open-cards.jpg" alt="Dark Moon Tarot"></nuxt-link>
     
     <section>
-      <nuxt-link to="/dark-moon-tarot" class="text-2xl font-weird text-center">
+      <nuxt-link to="/dark-moon-tarot" class="text-2xl font-weird text-center max-w-md">
         <h2 class="title mb-8">Discover my hand drawn tarot deck</h2>
-        <img src="/dark-moon-tarot/logo-white.png" alt="Dark Moon Tarot" class="max-w-md mx-auto w-full">
+        <img src="/dark-moon-tarot/logo-white.png" alt="Dark Moon Tarot" class="mx-auto">
         <BaseButton>Learn More</BaseButton>
       </nuxt-link>
     </section>
@@ -73,7 +75,7 @@
       <h2 class="title font-weird mb-4">Who Am I?</h2>
       <p>I'm someone somewhere making art</p>
 
-      <img src="/img/office-zine-wall.JPG" alt="A wall shot in a depth of field blur by a wall of zines and paper held hostage in clipboards">
+      <img class="max-w-full" src="/img/office-zine-wall.JPG" alt="A wall shot in a depth of field blur by a wall of zines and paper held hostage in clipboards">
       
 
     </section>
