@@ -1,13 +1,19 @@
 <template>
-  <div class="card noSelect" :class="{'card--flipped': flipped }" @click="flipCard">
-    <div class="card__loading absolute inset-0 flex items-center justify-center pb-[7%] pr-[4%]" v-if="!randomCard">
-      <BaseLoader />
+  <div class="relative">
+    <div class="">
+      <div v-if="!flipped" class="text-center">{{ randomCard.name }}</div>
+      <div v-else class="text-center text-gray-300">------</div>
     </div>
-    <div class="card__face card__face--front">
-      <img :src="randomCard.img" :alt="randomCard.name" v-if="randomCard" />
-    </div>
-    <div class="card__face card__face--back">
-      <img src="/deck-mock/cover_card.png" alt="Back" />
+    <div class="card noSelect" :class="{'card--flipped': flipped }" @click="flipCard">
+      <div class="card__loading absolute inset-0 flex items-center justify-center pb-[7%] pr-[4%]" v-if="!randomCard">
+        <BaseLoader />
+      </div>
+      <div class="card__face card__face--front">
+        <img :src="randomCard.img" :alt="randomCard.name" v-if="randomCard" />
+      </div>
+      <div class="card__face card__face--back">
+        <img src="/deck-mock/cover_card.png" alt="Back" />
+      </div>
     </div>
   </div>
 </template>
