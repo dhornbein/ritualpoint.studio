@@ -103,7 +103,7 @@ useHead({
     { hid: 'og-desc', property: 'og:description', content: desc },
     { hid: 'og-type', property: 'og:type', content: 'product' },
     { hid: 'og-title', property: 'og:title', content: 'The Dark Moon Tarot' },
-    { hid: 'og-image', property: 'og:image', content: 'https://ritualpoint.studio/img/og-darkmoon.jpg' },
+    { hid: 'og-image', property: 'og:image', content: 'https://ritualpoint.studio/dark-moon-tarot/og-dark-moon-tarot.jpg' },
     { hid: 'og-url', property: 'og:url', content: 'https://ritualpoint.studio/dark-moon-tarot' },
     { hid: 't-type', name: 'twitter:card', content: 'summary_large_image' },
   ],
