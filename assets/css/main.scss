@@ -20,10 +20,11 @@ section {
   @apply max-w-screen-md mx-auto flex flex-col items-center justify-center min-h-[90vh] py-20;
 }
 
-.link-wavy {
-  @apply underline decoration-wavy underline-offset-4 hover:decoration-solid hover:underline-offset-8;
+@layer utilities {
+  .link-wavy {
+    @apply underline decoration-wavy underline-offset-4 hover:decoration-solid hover:underline-offset-8;
+  }
 }
-
 
 h1.title,
 h2.title {
