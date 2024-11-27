@@ -4,7 +4,8 @@
       <div v-if="!flipped" class="text-center">{{ randomCard.name }}</div>
       <div v-else class="text-center text-gray-300">------</div>
     </div>
-    <div class="card noSelect" :class="{ 'card--flipped': flipped }" @click="flipHandler">
+    <div class="card noSelect" :class="{ 'card--flipped': flipped, 'card--idol': props.flipOnClick }"
+      @click="flipHandler">
       <div class="card__loading absolute inset-0 flex items-center justify-center pb-[7%] pr-[4%]" v-if="!randomCard">
         <BaseLoader />
       </div>
@@ -32,27 +33,44 @@
     width: 100%;
     height: 100%;
     backface-visibility: hidden;
-    transition: transform 0.8s;
-    transform-style: preserve-3d;
     transition: transform 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    transform-style: preserve-3d;
 
     &--front {
-      transform: rotateX(0deg);
+      transform: rotateY(0deg);
     }
 
     &--back {
-      transform: rotateX(180deg);
+      transform: rotateY(180deg);
     }
   }
 
   &--flipped {
     .card__face--front {
-      transform: rotateX(180deg);
+      transform: rotateY(180deg);
     }
 
     .card__face--back {
-      transform: rotateX(0deg);
+      transform: rotateY(0deg);
     }
+  }
+
+  &--idol {
+    animation: idolAnimation 3s ease-in-out infinite;
+  }
+}
+
+@keyframes idolAnimation {
+  0% {
+    transform: translateY(0px) rotate3d(10,0,1,0deg);
+  }
+
+  50% {
+    transform: translateY(-10px) rotate3d(10, 0, 1, 10deg);
+  }
+
+  100% {
+    transform: translateY(0px) rotate3d(10, 0, 1, 0deg);
   }
 }
 
@@ -198,4 +216,7 @@ This component has been updated to be more reusable across different contexts:
 
 4. Generalization:
    - This makes the `tarot-card.vue` more suitable for different contexts, such as "tarot-reading.vue" where the flip behavior or the emitted data needs customization.
+
+5. Idle Animation:
+   - Added an idle animation (`idolAnimation`) that applies a gentle floating effect using CSS keyframes when `flipOnClick` is enabled. This gives the card a "floating" appearance, enhancing the interaction and making it more visually appealing.
 -->
