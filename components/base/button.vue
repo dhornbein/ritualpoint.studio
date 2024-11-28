@@ -22,10 +22,14 @@ button {
   font-family: nitti-typewriter-open, monospace;
   background: url(/img/button.png) no-repeat center;
   background-size: 15rem auto;
-  &:hover {
+  &:disabled {
+    opacity: .4;
+    cursor:not-allowed;
+  }
+  &:hover:not(:disabled) {
     background-image: url(/img/button_hover.png);
   }
-  &:active {
+  &:active:not(:disabled) {
     @apply pt-6;
     background-image: url(/img/button_click.png);
   }
@@ -33,10 +37,10 @@ button {
   &[dark] {
     @apply bg-transparent text-stone-900;
     background-image: url(/img/button_black.png);
-    &:hover {
+    &:hover:not(:disabled) {
       background-image: url(/img/button_black_hover.png);
     }
-    &:active {
+    &:active:not(:disabled) {
       @apply pt-6;
       background-image: url(/img/button_black_click.png);
     }
