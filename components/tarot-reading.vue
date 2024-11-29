@@ -1,16 +1,24 @@
 <template>
   <div class="tarot-reading flex gap-8">
-    <tarot-card :flipOnClick=false @card-flipped="handleCardFlipped" ref="tarotCardRef"></tarot-card>
+    <tarot-card :flipOnClick=false @click="handleCardClick" @card-flipped="handleCardFlipped"
+      ref="tarotCardRef"></tarot-card>
     <div class="w-full max-w-prose flex flex-col gap-2 pt-8">
 
       <label for="query">Pull one of my <nuxt-link to="dmt" class="text-pink-400">Dark Moon Tarot</nuxt-link> cards.
-        Start with a question, a query, a wondering. It doesn't have to be perfect or even good. Just ask
+        <span class="reading__announcement" ref="readingAnnouncement">Start with a question, a query, a
+          wondering.</span> It doesn't have to be perfect or even good. Just ask
         something.</label>
 
       <div class="relative">
         <textarea v-model="question" name="query" id="query" placeholder="enter your questions here..."
+          ref="tarotQuestionFieldRef"
           class="max-w-prose w-full h-56 bg-slate-700 rounded p-6 pb-24 focus-visible:outline-pink-400 focus-visible:outline-1 focus-visible:outline"></textarea>
-        <button class="absolute -left-4 -bottom-6" @click="handleFlipSubmit" :disabled="!question">Flip a Card</button>
+        <button class="absolute -left-4 -bottom-6" @click="handleFlipSubmit" :disabled="!question && !message">
+          <template v-if="!card">Reveal Card</template>
+          <template v-else>Flip Again</template>
+        </button>
+        <p class="reading__reset absolute right-4 bottom-4 cursor-pointer text-slate-200 hover:text-white"
+          v-if="card || question" @click="handleReset">&olarr; Reset</p>
       </div>
 
       <transition name="fade-slide" mode="out-in">
@@ -23,13 +31,25 @@
             <span class="question">{{ message?.question }}</span>
           </p>
         </div>
-        <div class="message__default" v-else>Flip a card to find out...</div>
+        <div class="message__default" v-else>
+          <p v-if="!question">Enter your question, then flip a card to find out...</p>
+          <p v-else>Flip a card to find out...</p>
+        </div>
       </transition>
     </div>
   </div>
 </template>
 
 <style lang="scss">
+
+  .reading__announcement {
+    transition: all 2s ease-out;
+    &.reading__announcement--active {
+      @apply bg-pink-600 shadow-pink-600;
+      box-shadow: 0 0 0 3px var(--tw-shadow-color);
+      transition-duration: 500ms;
+    }
+  }
 
   /* Fade and slide transition for the container */
   .fade-slide-enter-active,
@@ -109,18 +129,21 @@ const message = ref(false)
 const card = ref(false)
 const flipUnlocked = ref(false)
 const tarotCardRef = ref(null)
+const tarotQuestionFieldRef = ref(null)
+const readingAnnouncement = ref(null)
 const tarotCardFlipped = ref(false)
 
-function handleCardFlipped(card) {
-  console.log('handling flipped card', card);
+function handleCardFlipped(IncomingCard) {
+  console.log('handling flipped card', IncomingCard);
   
-  if (card) {
-    console.log('id:',card.id);
+  if (IncomingCard) {
+    console.log('id:',IncomingCard.id);
     
-    card.value = card.id; // Capture the card name from the emitted event
-    message.value = generateMessage(card.id)
+    card.value = IncomingCard.id; // Capture the card name from the emitted event
+    message.value = generateMessage(IncomingCard.id)
   } else {
     message.value = false
+    card.value = false
   }
 }
 
@@ -130,6 +153,29 @@ function handleFlipSubmit() {
   tarotCardFlipped.value = true
 }
 
+function handleCardClick() {
+  tarotQuestionFieldRef.value.focus()
+  
+  announce()
+}
+
+function handleReset() {
+  question.value = ''
+  console.log('the card is',card.value);
+  
+  if(card.value) {
+    tarotCardRef.value.flipCard()
+  }
+}
+
+function announce() {
+  const element = readingAnnouncement.value
+
+  element.classList.add('reading__announcement--active')
+  setTimeout(() => {
+    element.classList.remove("reading__announcement--active");
+  }, 3000); // Adjust duration as needed
+}
 
 function generateMessage(cardNotation) {
   // Randomly pick parts of the message
