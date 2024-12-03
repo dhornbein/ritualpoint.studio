@@ -9,26 +9,38 @@
           wondering.</span> It doesn't have to be perfect or even good. Just ask
         something.</label>
 
-      <div class="relative">
+      <form id="tarotForm" class="relative" :action="formspreeEndpoint" method="POST"
+        @submit.prevent="handleFormSubmit">
+        <input type="hidden" name="_subject" value="New Tarot Reading Request" />
+        <input type="hidden" name="cardName" :value="card.name" />
+        <input type="hidden" name="email" :value="email" />
+
         <textarea v-model="question" name="query" id="query" placeholder="enter your questions here..."
           ref="tarotQuestionFieldRef"
           class="max-w-prose w-full h-56 bg-slate-700 rounded p-6 pb-24 focus-visible:outline-pink-400 focus-visible:outline-1 focus-visible:outline"></textarea>
+
         <button class="absolute -left-4 -bottom-6" @click="handleFlipSubmit" :disabled="!question && !message">
           <template v-if="!card">Reveal Card</template>
           <template v-else>Flip Again</template>
         </button>
+
         <p class="reading__reset absolute right-4 bottom-4 cursor-pointer text-slate-200 hover:text-white"
           v-if="card || question" @click="handleReset">&olarr; Reset</p>
-      </div>
+      </form>
 
       <transition name="fade-slide" mode="out-in">
         <div class="return p-8 max-w-prose text-lg" v-if="message" :key="message?.name">
           <span class="exclamation">{{ message?.exclamation }}</span> <span class="opening">{{ message?.opening }}
           </span>
+          <strong class="name block">{{ message?.name }}</strong> <span class="description">{{ message?.description
+            }}</span>
+          <span class="question">{{ message?.question }}</span>
+          <hr class="my-4 border-slate-500">
           <p>
-            <strong class="name">{{ message?.name }}</strong> <span class="description">{{ message?.description
-              }}</span>
-            <span class="question">{{ message?.question }}</span>
+            <label for="reader__email">For a more in-depth free reading email me</label>
+            <input id="reader__email" type="text" placeholder="enter your email here..." v-model="email"
+              class="bg-slate-700 focus-visible:outline-pink-400 focus-visible:outline-1 focus-visible:outline p-2 w-full">
+            <button @click="submitForm">Email Me </button>
           </p>
         </div>
         <div class="message__default" v-else>
@@ -96,12 +108,17 @@
   .return p>span {
     display: inline-block;
     /* Allows independent animation */
-    opacity: 0;
-    /* Start invisible */
-    animation: floatIn 0.6s ease-out forwards;
+    
   }
 
   /* Staggered delays */
+
+  .return * {
+    animation: floatIn 0.6s ease-out forwards;
+    opacity: 0;
+    animation-delay: 1.4s;
+  }
+
   .return .exclamation {
     animation-delay: 0.2s;
   }
@@ -132,6 +149,8 @@ const tarotCardRef = ref(null)
 const tarotQuestionFieldRef = ref(null)
 const readingAnnouncement = ref(null)
 const tarotCardFlipped = ref(false)
+const formspreeEndpoint = ref('')
+const email = ref('')
 
 function handleCardFlipped(IncomingCard) {
   console.log('handling flipped card', IncomingCard);
@@ -139,7 +158,7 @@ function handleCardFlipped(IncomingCard) {
   if (IncomingCard) {
     console.log('id:',IncomingCard.id);
     
-    card.value = IncomingCard.id; // Capture the card name from the emitted event
+    card.value = IncomingCard; // Capture the card name from the emitted event
     message.value = generateMessage(IncomingCard.id)
   } else {
     message.value = false
@@ -154,10 +173,42 @@ function handleFlipSubmit() {
 }
 
 function handleCardClick() {
+  if (question.value) {
+    tarotCardRef.value.flipCard()
+    return
+  }
+
   tarotQuestionFieldRef.value.focus()
-  
   announce()
+
 }
+
+const handleFormSubmit = (event) => {
+  event.preventDefault();
+  
+  if (!question.value) {
+    tarotQuestionFieldRef.value?.focus();
+    console.log("Please fill out the question before submitting.");
+    return;
+  }
+
+  // Get the form data
+  const formData = new FormData(event.target);
+
+  // Convert FormData to an object for easier debugging
+  const formObject = Object.fromEntries(formData.entries());
+
+  // Log the form data
+  console.log("Form submission data:", formObject);
+}
+
+// Method to trigger form submission programmatically
+const submitForm = () => {
+  const form = document.getElementById("tarotForm");
+  if (form) {
+    form.requestSubmit(); // Preferred modern method
+  }
+};
 
 function handleReset() {
   question.value = ''
