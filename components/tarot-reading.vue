@@ -7,37 +7,39 @@
     <div class="flex gap-8">
       <tarot-card :flipOnClick=false @click="handleCardClick" @card-flipped="handleCardFlipped"
         ref="tarotCardRef"></tarot-card>
-      <div class="w-full max-w-prose flex flex-col gap-2 pt-4">
+      <form id="tarotForm" @submit.prevent="handleFormSubmit" class="w-full max-w-prose flex flex-col gap-2 pt-4">
     
-        <form id="tarotForm" class="relative" :action="formspreeEndpoint" method="POST"
-          @submit.prevent="handleFormSubmit">
-          <input type="hidden" name="_subject" value="New Tarot Reading Request" />
+        <div class="relative">
+          <input type="hidden" name="subject" value="Reading for the {{ cardName }}" />
           <input type="hidden" name="cardName" :value="card.name" />
-          <input type="hidden" name="cardImg" :value="`https://ritualpoint.studio/${card.img}`" />
-          <input type="hidden" name="email" :value="email" />
-          <textarea v-model="question" name="query" id="query" placeholder="enter your questions here..."
+          <input type="hidden" name="cardImg" :value="`https://ritualpoint.studio${card.img}`" />
+          
+          <textarea v-model="question" name="query" id="query" placeholder="enter your questions here..." :readonly="card"
             ref="tarotQuestionFieldRef"
-            class="max-w-prose w-full h-36 bg-slate-700 rounded p-6 block focus-visible:outline-pink-400 focus-visible:outline-1 focus-visible:outline"></textarea>
+            class="max-w-prose w-full h-36 bg-slate-700 rounded p-6 block transition-all focus-visible:outline-pink-400 focus-visible:outline-1 focus-visible:outline read-only:focus-visible:outline-none read-only:bg-transparent"></textarea>
+          
           <div class="flex justify-around items-center h-32">
-            <button class="" @click="handleFlipSubmit" :disabled="!question && !message">
+            <button class="" @click.prevent="handleFlipSubmit" :disabled="!question && !message">
               <template v-if="!card">Reveal Card</template>
               <template v-else>Flip Again</template>
             </button>
             <p class="reading__reset cursor-pointer text-slate-200 hover:text-white"
               :class="{invisible: !card && !question}" @click="handleReset">&olarr; Reset</p>
           </div>
-        </form>
+        </div>
         <transition name="fade-slide" mode="out-in">
           <div class="return px-8 max-w-prose text-lg" v-if="message" :key="message?.name">
             <span class="exclamation">{{ message?.exclamation }}</span> <span class="opening">{{ message?.opening }}</span>
             <strong class="name block">{{ message?.name }}</strong> <span class="description">{{ message?.description }}</span>
             <span class="question">{{ message?.question }}</span>
             <hr class="my-4 border-slate-500">
-            <p>
+            <p v-if="formMessage" class="text-green-200">{{ formMessage }}</p>
+            <p class="text-red-200" v-else-if="formError">{{ formError }} try emailing me <a href="mailto:drew@ritualpoint.studio">Drew@RitualPoint.Studio</a></p>
+            <p v-else>
               <label for="reader__email">For a more in-depth free reading email me</label>
-              <input id="reader__email" type="text" placeholder="enter your email here..." v-model="email"
+              <input id="reader__email" type="email" name="email" placeholder="enter your email here..." v-model="email" required 
                 class="bg-slate-700 focus-visible:outline-pink-400 focus-visible:outline-1 focus-visible:outline p-2 w-full">
-              <button @click="submitForm">Email Me </button>
+              <button type="submit">Email Me </button>
             </p>
           </div>
           <div class="message__default" v-else>
@@ -45,7 +47,7 @@
             <p v-else>Flip a card to find out...</p>
           </div>
         </transition>
-      </div>
+      </form>
     </div>
   </div>
 </template>
@@ -148,10 +150,14 @@ const tarotQuestionFieldRef = ref(null)
 const readingAnnouncement = ref(null)
 const tarotCardFlipped = ref(false)
 const formspreeEndpoint = ref('https://formspree.io/f/xrbgobzo')
+const formMessage = ref(null)
+const formError = ref(null)
 const email = ref('')
 
 function handleCardFlipped(IncomingCard) {
   console.log('handling flipped card', IncomingCard);
+  formMessage.value = null
+  formError.value = null
   
   if (IncomingCard) {
     console.log('id:',IncomingCard.id);
@@ -181,30 +187,47 @@ function handleCardClick() {
 
 }
 
-const handleFormSubmit = (event) => {
+const handleFormSubmit = async (event) => {
   event.preventDefault();
-  
+  const successMessage = "I got your submission, expect a reply in a few days ✨"
+
   if (!question.value) {
     tarotQuestionFieldRef.value?.focus();
     console.log("Please fill out the question before submitting.");
     return;
   }
 
+  if (!card.value) {
+    console.log("No card");
+    return;
+  }
+
   // Get the form data
   const formData = new FormData(event.target);
+  console.log("Form submission data:", Object.fromEntries(formData.entries()));
+  
 
-  // Convert FormData to an object for easier debugging
-  const formObject = Object.fromEntries(formData.entries());
+  try {
+    // Send form data to Formspree endpoint
+    const response = await fetch(formspreeEndpoint.value, {
+      method: "POST",
+      body: formData,
+      headers: {
+        Accept: "application/json",
+      },
+    });
 
-  // Log the form data
-  console.log("Form submission data:", formObject);
-}
-
-// Method to trigger form submission programmatically
-const submitForm = () => {
-  const form = document.getElementById("tarotForm");
-  if (form) {
-    form.requestSubmit(); // Preferred modern method
+    if (response.ok) {
+      console.log('form submission success!');
+      
+      formMessage.value = successMessage
+    } else {
+      console.error("Form submission failed:", await response.json());
+      formError.value = "The submission failed..."
+    }
+  } catch (error) {
+    console.error("An error occurred while submitting the form:", error);
+    formError.value = "Something went wrong..."
   }
 };
 
