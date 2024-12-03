@@ -1,53 +1,51 @@
 <template>
-  <div class="tarot-reading flex gap-8">
-    <tarot-card :flipOnClick=false @click="handleCardClick" @card-flipped="handleCardFlipped"
-      ref="tarotCardRef"></tarot-card>
-    <div class="w-full max-w-prose flex flex-col gap-2 pt-8">
-
-      <label for="query">Pull one of my <nuxt-link to="dmt" class="text-pink-400">Dark Moon Tarot</nuxt-link> cards.
+  <div class="tarot-reading">
+    <label for="query" class="max-w-prose mx-auto block">Pull one of my <nuxt-link to="dmt" class="text-pink-400">Dark Moon Tarot</nuxt-link> cards.
         <span class="reading__announcement" ref="readingAnnouncement">Start with a question, a query, a
           wondering.</span> It doesn't have to be perfect or even good. Just ask
         something.</label>
-
-      <form id="tarotForm" class="relative" :action="formspreeEndpoint" method="POST"
-        @submit.prevent="handleFormSubmit">
-        <input type="hidden" name="_subject" value="New Tarot Reading Request" />
-        <input type="hidden" name="cardName" :value="card.name" />
-        <input type="hidden" name="email" :value="email" />
-
-        <textarea v-model="question" name="query" id="query" placeholder="enter your questions here..."
-          ref="tarotQuestionFieldRef"
-          class="max-w-prose w-full h-56 bg-slate-700 rounded p-6 pb-24 focus-visible:outline-pink-400 focus-visible:outline-1 focus-visible:outline"></textarea>
-
-        <button class="absolute -left-4 -bottom-6" @click="handleFlipSubmit" :disabled="!question && !message">
-          <template v-if="!card">Reveal Card</template>
-          <template v-else>Flip Again</template>
-        </button>
-
-        <p class="reading__reset absolute right-4 bottom-4 cursor-pointer text-slate-200 hover:text-white"
-          v-if="card || question" @click="handleReset">&olarr; Reset</p>
-      </form>
-
-      <transition name="fade-slide" mode="out-in">
-        <div class="return p-8 max-w-prose text-lg" v-if="message" :key="message?.name">
-          <span class="exclamation">{{ message?.exclamation }}</span> <span class="opening">{{ message?.opening }}
-          </span>
-          <strong class="name block">{{ message?.name }}</strong> <span class="description">{{ message?.description
-            }}</span>
-          <span class="question">{{ message?.question }}</span>
-          <hr class="my-4 border-slate-500">
-          <p>
-            <label for="reader__email">For a more in-depth free reading email me</label>
-            <input id="reader__email" type="text" placeholder="enter your email here..." v-model="email"
-              class="bg-slate-700 focus-visible:outline-pink-400 focus-visible:outline-1 focus-visible:outline p-2 w-full">
-            <button @click="submitForm">Email Me </button>
-          </p>
-        </div>
-        <div class="message__default" v-else>
-          <p v-if="!question">Enter your question, then flip a card to find out...</p>
-          <p v-else>Flip a card to find out...</p>
-        </div>
-      </transition>
+    <div class="flex gap-8">
+      <tarot-card :flipOnClick=false @click="handleCardClick" @card-flipped="handleCardFlipped"
+        ref="tarotCardRef"></tarot-card>
+      <div class="w-full max-w-prose flex flex-col gap-2 pt-4">
+    
+        <form id="tarotForm" class="relative" :action="formspreeEndpoint" method="POST"
+          @submit.prevent="handleFormSubmit">
+          <input type="hidden" name="_subject" value="New Tarot Reading Request" />
+          <input type="hidden" name="cardName" :value="card.name" />
+          <input type="hidden" name="cardImg" :value="`https://ritualpoint.studio/${card.img}`" />
+          <input type="hidden" name="email" :value="email" />
+          <textarea v-model="question" name="query" id="query" placeholder="enter your questions here..."
+            ref="tarotQuestionFieldRef"
+            class="max-w-prose w-full h-36 bg-slate-700 rounded p-6 block focus-visible:outline-pink-400 focus-visible:outline-1 focus-visible:outline"></textarea>
+          <div class="flex justify-around items-center h-32">
+            <button class="" @click="handleFlipSubmit" :disabled="!question && !message">
+              <template v-if="!card">Reveal Card</template>
+              <template v-else>Flip Again</template>
+            </button>
+            <p class="reading__reset cursor-pointer text-slate-200 hover:text-white"
+              :class="{invisible: !card && !question}" @click="handleReset">&olarr; Reset</p>
+          </div>
+        </form>
+        <transition name="fade-slide" mode="out-in">
+          <div class="return px-8 max-w-prose text-lg" v-if="message" :key="message?.name">
+            <span class="exclamation">{{ message?.exclamation }}</span> <span class="opening">{{ message?.opening }}</span>
+            <strong class="name block">{{ message?.name }}</strong> <span class="description">{{ message?.description }}</span>
+            <span class="question">{{ message?.question }}</span>
+            <hr class="my-4 border-slate-500">
+            <p>
+              <label for="reader__email">For a more in-depth free reading email me</label>
+              <input id="reader__email" type="text" placeholder="enter your email here..." v-model="email"
+                class="bg-slate-700 focus-visible:outline-pink-400 focus-visible:outline-1 focus-visible:outline p-2 w-full">
+              <button @click="submitForm">Email Me </button>
+            </p>
+          </div>
+          <div class="message__default" v-else>
+            <p v-if="!question">Enter your question, then flip a card to find out...</p>
+            <p v-else>Flip a card to find out...</p>
+          </div>
+        </transition>
+      </div>
     </div>
   </div>
 </template>
@@ -149,7 +147,7 @@ const tarotCardRef = ref(null)
 const tarotQuestionFieldRef = ref(null)
 const readingAnnouncement = ref(null)
 const tarotCardFlipped = ref(false)
-const formspreeEndpoint = ref('')
+const formspreeEndpoint = ref('https://formspree.io/f/xrbgobzo')
 const email = ref('')
 
 function handleCardFlipped(IncomingCard) {
@@ -212,7 +210,7 @@ const submitForm = () => {
 
 function handleReset() {
   question.value = ''
-  console.log('the card is',card.value);
+  tarotQuestionFieldRef.value.focus()
   
   if(card.value) {
     tarotCardRef.value.flipCard()
