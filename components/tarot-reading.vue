@@ -4,7 +4,7 @@
         <span class="reading__announcement" ref="readingAnnouncement">Start with a question, a query, a
           wondering.</span> It doesn't have to be perfect or even good. Just ask
         something.</label>
-    <div class="flex gap-8">
+    <div class="flex md:gap-8 flex-wrap md:flex-nowrap justify-center">
       <tarot-card :flipOnClick=false @click="handleCardClick" @card-flipped="handleCardFlipped"
         ref="tarotCardRef"></tarot-card>
       <form id="tarotForm" @submit.prevent="handleFormSubmit" class="w-full max-w-prose flex flex-col gap-2 pt-4">
@@ -15,10 +15,10 @@
           <input type="hidden" name="cardImg" :value="`https://ritualpoint.studio${card.img}`" />
           
           <textarea v-model="question" name="query" id="query" placeholder="enter your questions here..." :readonly="card"
-            ref="tarotQuestionFieldRef"
-            class="max-w-prose w-full h-36 bg-slate-700 rounded p-6 block transition-all focus-visible:outline-pink-400 focus-visible:outline-1 focus-visible:outline read-only:focus-visible:outline-none read-only:bg-transparent"></textarea>
+            ref="tarotQuestionFieldRef" @input="autoResize"
+            class="max-w-prose w-full  whitespace-pre-wrap break-words resize-none overflow-hidden bg-slate-700 rounded sm:p-4 p-2 pb-1 block transition-all focus-visible:outline-pink-400 focus-visible:outline-1 focus-visible:outline read-only:focus-visible:outline-none read-only:bg-transparent"></textarea>
           
-          <div class="flex justify-around items-center h-32">
+          <div class="hidden sm:flex justify-around items-center h-32">
             <button class="" @click.prevent="handleFlipSubmit" :disabled="!question && !message">
               <template v-if="!card">Reveal Card</template>
               <template v-else>Flip Again</template>
@@ -28,7 +28,7 @@
           </div>
         </div>
         <transition name="fade-slide" mode="out-in">
-          <div class="return px-8 max-w-prose text-lg" v-if="message" :key="message?.name">
+          <div class="return sm:px-8 max-w-prose md:text-lg" v-if="message" :key="message?.name">
             <span class="exclamation">{{ message?.exclamation }}</span> <span class="opening">{{ message?.opening }}</span>
             <strong class="name block">{{ message?.name }}</strong> <span class="description">{{ message?.description }}</span>
             <span class="question">{{ message?.question }}</span>
@@ -43,7 +43,7 @@
             </p>
           </div>
           <div class="message__default" v-else>
-            <p v-if="!question">Enter your question, then flip a card to find out...</p>
+            <p v-if="!question">Enter your question, then flip (press) a card to find out...</p>
             <p v-else>Flip a card to find out...</p>
           </div>
         </transition>
@@ -53,6 +53,12 @@
 </template>
 
 <style lang="scss">
+
+  .tarot-reading {
+    .card {
+      @apply max-h-[60vh] md:max-h-[90vh]
+    }
+  }
 
   .reading__announcement {
     transition: all 2s ease-out;
@@ -239,6 +245,12 @@ function handleReset() {
     tarotCardRef.value.flipCard()
   }
 }
+
+const autoResize = (event) => {
+  const el = event.target;
+  el.style.height = "auto"; // Reset height to recalculate
+  el.style.height = `${el.scrollHeight}px`; // Set new height based on content
+};
 
 function announce() {
   const element = readingAnnouncement.value
