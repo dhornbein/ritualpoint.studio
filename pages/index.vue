@@ -44,6 +44,11 @@
     </section>
     <img src="/img/squiggle.png" alt="" class="max-w-[150px]">
 
+    <div class="my-20 md:p-8 w-full">
+      <h1 class="text-2xl text-center mb-10">Get a free reading</h1>
+      <tarot-reading></tarot-reading>
+    </div>
+
     <nuxt-link to="/dmt" id="dmt-box" class="filter mix-blend-exclusion mt-8"><img class="max-h-[80vh] invert" src="/dark-moon-tarot/dmt-product-box-open-cards.jpg" alt="Dark Moon Tarot"></nuxt-link>
     
     <section>
