@@ -3,7 +3,10 @@
     <label for="query" class="max-w-prose mx-auto block">Pull one of my <nuxt-link to="dmt" class="text-pink-400">Dark Moon Tarot</nuxt-link> cards.
         <span class="reading__announcement" ref="readingAnnouncement">Start with a question, a query, a
           wondering.</span> It doesn't have to be perfect or even good. Just ask
-        something.</label>
+        something. Some ideas:</label> 
+        <ul class="max-w-prose mx-auto list-disc pl-6 mt-4">
+          <li class="hover:text-pink-500 cursor-pointer" @click="selectQuestion(q)" v-for="(q, index) in sampleQuestions" :key="index">{{ q }}</li>
+        </ul>
     <div class="flex md:gap-8 flex-wrap md:flex-nowrap justify-center">
       <tarot-card :flipOnClick=false @click="handleCardClick" @card-flipped="handleCardFlipped"
         ref="tarotCardRef"></tarot-card>
@@ -36,7 +39,7 @@
             <p v-if="formMessage" class="text-green-200">{{ formMessage }}</p>
             <p class="text-red-200" v-else-if="formError">{{ formError }} try emailing me <a href="mailto:drew@ritualpoint.studio">Drew@RitualPoint.Studio</a></p>
             <p v-else>
-              <label for="reader__email">For a more in-depth free reading email me</label>
+              <label for="reader__email">Give me your email for a hand written response to your question:</label>
               <input id="reader__email" type="email" name="email" placeholder="enter your email here..." v-model="email" required 
                 class="bg-slate-700 focus-visible:outline-pink-400 focus-visible:outline-1 focus-visible:outline p-2 w-full">
               <button type="submit">Email Me </button>
@@ -261,6 +264,18 @@ function announce() {
   }, 3000); // Adjust duration as needed
 }
 
+const sampleQuestions = ref([
+  "What lesson am I encountering from the universe?",
+  "What part of myself needs more attention or care?",
+  "What role do I play in the challenges I'm facing in my relationship?",
+  "What do I need to consider before making this decision?",
+])
+
+function selectQuestion(q) {
+  question.value = q;
+  tarotQuestionFieldRef.value.focus()
+}
+
 function generateMessage(cardNotation) {
   // Randomly pick parts of the message
   const exclamation = messageSegments.exclamations[Math.floor(Math.random() * messageSegments.exclamations.length)];
@@ -306,7 +321,6 @@ function generateMessage(cardNotation) {
     question
   };
 }
-
 
 const messageSegments = {
   exclamations: [
