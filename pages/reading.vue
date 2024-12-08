@@ -1,17 +1,6 @@
 <template>
   <div class="flex flex-col items-center p-4 relative">
-    <nav class="absolute flex md:justify-between justify-around w-full px-2">
-      <nuxt-link to="/">Go Home</nuxt-link>
-      <nuxt-link to="/links" class="flex flex-col items-center gap-2">
-        <span class="font-weird text-sm">Link Tree</span>
-        <img src="/img/lines.png" alt="" class="w-20">
-      </nuxt-link>
-      <nuxt-link to="/pay" class="flex items-center gap-2">
-        <img src="/img/hand-bill.png" alt="" class="h-10">
-        <img src="/img/txt-pay-me.png" alt="Pay Me" class="h-6 hidden sm:inline">
-      </nuxt-link>
-    </nav>
-    <title>Ritual Point Art & Divination</title>
+    <base-nav/>
     <section class="flex flex-col gap-6">
       <h1><img src="/img/logo.png" alt="Ritual Point"></h1>
       <div>
