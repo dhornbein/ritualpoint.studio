@@ -1,28 +1,30 @@
 <template>
   <div class="tarot-reading">
-    <label for="query" class="max-w-prose mx-auto block">Pull one of my <nuxt-link to="dmt" class="text-pink-400">Dark Moon Tarot</nuxt-link> cards.
-        <span class="reading__announcement" ref="readingAnnouncement">Start with a question, a query, a
-          wondering.</span> It doesn't have to be perfect or even good. Just ask
-        something. Some ideas:</label> 
-        <ul class="max-w-prose mx-auto list-disc pl-6 mt-4">
-          <li class="hover:text-pink-500 cursor-pointer" @click="selectQuestion(q)" v-for="(q, index) in sampleQuestions" :key="index">{{ q }}</li>
-        </ul>
+    <label for="query" class="max-w-prose mx-auto block">Pull one of my <nuxt-link to="dmt" class="text-pink-400">Dark
+        Moon Tarot</nuxt-link> cards.
+      <span class="reading__announcement" ref="readingAnnouncement">Start with a question, a query, a
+        wondering.</span> It doesn't have to be perfect or even good. Just ask
+      something. Some ideas:</label>
+    <ul class="max-w-prose mx-auto list-disc pl-6 mt-4">
+      <li class="hover:text-pink-500 cursor-pointer" @click="selectQuestion(q)" v-for="(q, index) in sampleQuestions"
+        :key="index">{{ q }}</li>
+    </ul>
     <div class="flex md:gap-8 flex-wrap md:flex-nowrap justify-center">
       <tarot-card :flipOnClick=false @click="handleCardClick" @card-flipped="handleCardFlipped"
         ref="tarotCardRef"></tarot-card>
       <form id="tarotForm" @submit.prevent="handleFormSubmit" class="w-full max-w-prose flex flex-col gap-2 pt-4">
-    
+
         <div class="relative">
           <input type="hidden" name="subject" value="Reading for the {{ cardName }}" />
           <input type="hidden" name="cardName" :value="card.name" />
           <input type="hidden" name="cardImg" :value="`https://ritualpoint.studio${card.img}`" />
-          
-          <textarea v-model="question" name="query" id="query" placeholder="enter your questions here..." :readonly="card"
-            ref="tarotQuestionFieldRef" @input="autoResize"
-            class="max-w-prose w-full  whitespace-pre-wrap break-words resize-none overflow-hidden bg-slate-700 rounded sm:p-4 p-2 pb-1 block transition-all focus-visible:outline-pink-400 focus-visible:outline-1 focus-visible:outline read-only:focus-visible:outline-none read-only:bg-transparent"></textarea>
-          
+
+          <textarea v-model="question" name="query" id="query" placeholder="enter your questions here..."
+            :readonly="card" ref="tarotQuestionFieldRef" @input="autoResize"
+            class="max-w-prose w-full  whitespace-pre-wrap break-words resize-none overflow-hidden bg-slate-700 rounded sm:p-4 p-2 pb-1 block transition-all focus-visible:outline-pink-400 focus-visible:outline-1 focus-visible:outline read-only:focus-visible:outline-none read-only:bg-transparent read-only:text-pink-400"></textarea>
+
           <div class="hidden sm:flex justify-around items-center h-32">
-            <button class="" @click.prevent="handleFlipSubmit" :disabled="!question && !message">
+            <button class="btn" @click.prevent="handleFlipSubmit" :disabled="!question && !message">
               <template v-if="!card">Reveal Card</template>
               <template v-else>Flip Again</template>
             </button>
@@ -32,22 +34,26 @@
         </div>
         <transition name="fade-slide" mode="out-in">
           <div class="return sm:px-8 max-w-prose md:text-lg" v-if="message" :key="message?.name">
-            <span class="exclamation">{{ message?.exclamation }}</span> <span class="opening">{{ message?.opening }}</span>
-            <strong class="name block">{{ message?.name }}</strong> <span class="description">{{ message?.description }}</span>
+            <span class="exclamation">{{ message?.exclamation }}</span> <span class="opening">{{ message?.opening
+              }}</span>
+            <strong class="name block">{{ message?.name }}</strong> <span class="description">{{ message?.description
+              }}</span>
             <span class="question">{{ message?.question }}</span>
             <hr class="my-4 border-slate-500">
             <p v-if="formMessage" class="text-green-200">{{ formMessage }}</p>
-            <p class="text-red-200" v-else-if="formError">{{ formError }} try emailing me <a href="mailto:drew@ritualpoint.studio">Drew@RitualPoint.Studio</a></p>
+            <p class="text-red-200" v-else-if="formError">{{ formError }} try emailing me <a
+                href="mailto:drew@ritualpoint.studio">Drew@RitualPoint.Studio</a></p>
             <p v-else>
               <label for="reader__email">Give me your email for a hand written response to your question:</label>
-              <input id="reader__email" type="email" name="email" placeholder="enter your email here..." v-model="email" required 
+              <input id="reader__email" type="email" name="email" placeholder="enter your email here..." v-model="email"
+                required
                 class="bg-slate-700 focus-visible:outline-pink-400 focus-visible:outline-1 focus-visible:outline p-2 w-full">
-              <button type="submit">Email Me </button>
+              <button class="btn" type="submit">Email Me </button>
             </p>
           </div>
           <div class="message__default" v-else>
             <p v-if="!question">Enter your question, then flip (press) a card to find out...</p>
-            <p v-else>Flip a card to find out...</p>
+            <p v-else>Flip (press) the card to find out...</p>
           </div>
         </transition>
       </form>
@@ -272,8 +278,12 @@ const sampleQuestions = ref([
 ])
 
 function selectQuestion(q) {
+  const textarea = tarotQuestionFieldRef.value;
   question.value = q;
-  tarotQuestionFieldRef.value.focus()
+  textarea.value = q;
+  textarea.focus();
+  // Trigger the input event to sync and resize
+  textarea.dispatchEvent(new Event("input", { bubbles: true }));
 }
 
 function generateMessage(cardNotation) {
