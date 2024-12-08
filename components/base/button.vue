@@ -1,5 +1,5 @@
 <template>
-  <button @click="navigate" :dark="dark">
+  <button class="btn" @click="navigate" :dark="dark">
     <slot></slot>
   </button>
 </template>
@@ -17,7 +17,7 @@ function navigate() {
 </script>
 
 <style lang="scss">
-button {
+button.btn {
   @apply bg-stone-900 text-white p-4 pt-2 text-2xl w-60 h-40 leading-none;
   font-family: nitti-typewriter-open, monospace;
   background: url(/img/button.png) no-repeat center;
