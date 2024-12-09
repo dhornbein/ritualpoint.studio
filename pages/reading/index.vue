@@ -53,6 +53,8 @@
 
       <h1 class="text-2xl mb-4">About Me</h1>
 
+      <img class="rounded" src="/img/the-artist-drew-smiling.JPG" alt="A picture of me, drew, the artist swaddled in a blanked smiling at you">
+
       <p>
         I'm a queer mystic living in Denver, blending a background as a technologist, material rationalist, skeptic,
         activist, and artist into a practice that bridges the mystical and rational, the dark and the light, the
