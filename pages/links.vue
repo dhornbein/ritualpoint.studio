@@ -1,13 +1,9 @@
 <template>
   <main class="min-h-screen px-4 py-10 flex flex-col gap-4 justify-around">
+    <base-nav/>
     <nuxt-link to="/" class="flex gap-4 justify-center">
       <img src="/img/logo_mark.png" alt="" class="h-16">
       <img src="/img/logo.png" alt="Ritual Point" class="h-16">
-    </nuxt-link>
-
-    <nuxt-link to="/dmt" class="max-h-[60vh] rounded-md border border-gray-400 relative overflow-hidden">
-      <p class="absolute text-5xl drop-shadow-lg font-bold mix-blend-difference">Dark Moon Tarot is For Sale LEARN MORE</p>
-      <img class="object-cover" src="/dark-moon-tarot/dmt-product-box-open-cards.jpg" alt="Dark Moon Tarot">
     </nuxt-link>
 
     <BaseLink :link="link" v-for="(link, idx) in links" :key="idx" />
@@ -18,12 +14,26 @@
 <script setup>
 const links = [
   {
+    href: '/reading/free',
+    title: 'Free Tarot Reading',
+    subtitle: 'Ask a question and receive a free personalized email reading from me',
+    verb: 'Receive',
+    img: '/img/eye.png'
+  },
+  {
     href: '//ritualpoint.etsy.com/',
     class: 'bg-orange-400 text-black',
     title: 'Etsy Shop',
     subtitle: 'Buy the Dark Moon Tarot! ALso browse my zines and prints',
     verb: 'Visit',
     img: '/img/icon-flower.png'
+  },
+  {
+    href: '/dmt',
+    title: 'Dark Moon Tarot',
+    subtitle: 'Learn more about the Dark Moon Tarot',
+    verb: 'Learn',
+    img: '/deck-mock/00_card_sm.png'
   },
   {
     href: '//patreon.com/RitualPoint',
