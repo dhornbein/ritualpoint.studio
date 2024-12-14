@@ -3,12 +3,13 @@
     <base-nav />
     <section class="flex flex-col gap-6">
 
-      <div class="text-left flex flex-col gap-2">
+      <div class="flex flex-col gap-2 text-center">
         <h2 class="text-4xl">Tarot Readings</h2>
         <img src="/public/tattoo/hand-001.png"
           alt="Two hands reaching out from behind a veil of darkness, mysterious and alluring">
-        <p class="text-2xl">I offer a unique deeply grounded intuitive Tarot reading experience both in person and
+        <p class="text-2xl my-8">I offer a unique deeply grounded intuitive Tarot reading experience both in person and
           online.</p>
+        <img src="/public/img/dmt-card-spread-3-03.png" alt="a three card spread">
         <p>Curious? Keep reading or reach out:</p>
         <p><a href="mailto:hello@ritualpoint.studio" class="link-wavy text-pink-400">hello@ritualpoint.studio</a></p>
       </div>
