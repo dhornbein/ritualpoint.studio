@@ -6,7 +6,7 @@
         wondering.</span> It doesn't have to be perfect or even good. Just ask
       something. Some ideas:</label>
     <ul class="max-w-prose mx-auto list-disc pl-6 mt-4">
-      <li class="hover:text-pink-500 cursor-pointer" @click="selectQuestion(q)" v-for="(q, index) in sampleQuestions"
+      <li class="hover:text-pink-500 cursor-pointer text-cyan-200" @click="selectQuestion(q)" v-for="(q, index) in sampleQuestions"
         :key="index">{{ q }}</li>
     </ul>
     <div class="flex md:gap-8 flex-wrap md:flex-nowrap justify-center">
@@ -23,7 +23,7 @@
             :readonly="card" ref="tarotQuestionFieldRef" @input="autoResize"
             class="max-w-prose w-full  whitespace-pre-wrap break-words resize-none overflow-hidden bg-slate-700 rounded sm:p-4 p-2 pb-1 block transition-all focus-visible:outline-pink-400 focus-visible:outline-1 focus-visible:outline read-only:focus-visible:outline-none read-only:bg-transparent read-only:text-pink-400"></textarea>
 
-          <div class="hidden sm:flex justify-around items-center h-32">
+          <div class="hidden sm:flex flex-col justify-around items-center h-32">
             <button class="btn" @click.prevent="handleFlipSubmit" :disabled="!question && !message">
               <template v-if="!card">Reveal Card</template>
               <template v-else>Flip Again</template>
@@ -49,6 +49,8 @@
                 required
                 class="bg-slate-700 focus-visible:outline-pink-400 focus-visible:outline-1 focus-visible:outline p-2 w-full">
               <button class="btn" type="submit">Email Me </button>
+              <p class="italic text-center mb-10"><nuxt-link to="/reading" class="link-wavy text-pink-400">Learn more about
+          private readings</nuxt-link></p>
             </p>
           </div>
           <div class="message__default" v-else>
@@ -65,7 +67,7 @@
 
   .tarot-reading {
     .card {
-      @apply max-h-[60vh] md:max-h-[90vh]
+      @apply max-h-[60vh] lg:max-h-[90vh] md:max-h-[60vh]
     }
   }
 
