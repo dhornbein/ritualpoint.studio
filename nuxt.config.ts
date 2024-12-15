@@ -16,5 +16,10 @@ export default defineNuxtConfig({
       ],
       link: [{ rel: 'icon', type: 'image/png', href: '/img/logo_black.png' }]
     }
-  }
+  },
+  runtimeConfig: {
+    public: {
+      gcalApi: process.env.NUXT_GCAL_API,
+    },
+  },
 })
