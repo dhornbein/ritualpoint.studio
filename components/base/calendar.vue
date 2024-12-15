@@ -7,8 +7,8 @@
         :key="event.title + event.startTime"
         class="border border-gray-300 rounded-lg p-4 shadow-md flex flex-col"
       >
-        <h3 class="text-lg font-bold">{{ event.title }}</h3>
-        <p class="text-gray-600">{{ event.startTime }}</p>
+        <h3 class="text-lg font-bold">{{ event.startTime }}</h3>
+        <p class="text-gray-600">{{ event.title }}</p>
         <p v-if="event.description" class="text-sm text-gray-700 mt-2">
           {{ event.description }}
         </p>
@@ -18,13 +18,17 @@
 </template>
 
 <script setup>
+import { RRule } from 'rrule';
 
 const runtimeConfig = useRuntimeConfig();
 const apiKey = runtimeConfig.public.gcalApi;
 
-
 const props = defineProps({
   viewMode: {
+    type: String,
+    default: 'stacked', // 'stacked' or 'row'
+  },
+  dateFormat: {
     type: String,
     default: 'stacked', // 'stacked' or 'row'
   },
@@ -32,29 +36,64 @@ const props = defineProps({
     type: Number,
     default: 10,
   },
+  repeats: {
+    type: Object,
+    default: () => ({ daily: 10, monthly: 5, yearly: 2 }),
+  },
 });
 
 const events = ref([]);
 const error = ref(null);
 
 const transformEvents = (json) => {
-  
   if (!json.items) return [];
 
-  return json.items
-    .filter((event) => {
-      const start = new Date(event.start.dateTime || event.start.date);
-      return start > new Date();
-    })
-    .slice(0, props.maxEvents)
-    .map((event) => {
-      return {
-        title: event.summary || 'No Title',
-        description: cleanDescription(event.description || ''),
-        startTime: formatDate(event.start.dateTime || event.start.date),
-        endTime: event.end?.dateTime ? formatDate(event.end.dateTime) : null,
-      };
+  const parsedEvents = [];
+  json.items.forEach((event) => {
+    const start = new Date(event.start.dateTime || event.start.date);
+    const parsedEvent = {
+      title: event.summary || 'No Title',
+      description: cleanDescription(event.description || ''),
+      startTime: formatDate(event.start.dateTime || event.start.date),
+      endTime: event.end?.dateTime ? formatDate(event.end.dateTime) : null,
+    }
+
+    if (start > new Date()) {
+      parsedEvents.push(parsedEvent);
+      if (event.recurrence) {
+        const recurrence = parseRecurrence(event.recurrence[0], parsedEvent);
+        parsedEvents.push(...recurrence);
+      }
+    }
+  });
+
+  return parsedEvents.slice(0, props.maxEvents);
+};
+
+const parseRecurrence = (rrule, event) => {
+  const events = [];
+
+  try {
+    const rule = RRule.fromString(rrule);
+    const dates = rule.all().slice(0, 10);
+
+
+    dates.forEach((date) => {
+      
+      // add logic to measure the start and end date of the event object, then set the endTime of this event
+      
+      events.push({
+        title: event.title,
+        description: event.description,
+        startTime: formatDate(date),
+        endTime: event.endTime,
+      });
     });
+  } catch (err) {
+    console.error('Failed to parse RRULE:', err);
+  }
+
+  return events;
 };
 
 const cleanDescription = (description) => {
@@ -66,16 +105,12 @@ const cleanDescription = (description) => {
 
 const formatDate = (dateString) => {
   const date = new Date(dateString);
-  const options = { timeZone: 'America/Denver', dateStyle: 'medium', timeStyle: 'short' };
+  const options = { timeZone: 'America/Denver', weekday: 'long', month: 'short', day: 'numeric', hour: '2-digit', minute: '2-digit', hour12: true };
   return new Intl.DateTimeFormat(undefined, options).format(date);
 };
 
-onMounted(() => { console.log('onMounted is firing'); ;
-})
-
 onMounted(async () => {
   try {
-
     if (!apiKey) {
       throw new Error('API Key is missing or undefined');
     }
@@ -91,13 +126,11 @@ onMounted(async () => {
 
     const json = await response.json();
     events.value = transformEvents(json);
-
   } catch (err) {
     console.error('Error caught:', err.message);
     error.value = 'Failed to load events';
   }
 });
-
 </script>
 
 <style>
