@@ -21,6 +21,12 @@
           <nuxt-link to="/reading">Tarot Readings</nuxt-link>
           <ul class="list-disc">
             <li><nuxt-link to="/reading/free">Free Micro Reading</nuxt-link></li>
+            <li><nuxt-link to="/reading/private">Private Reading</nuxt-link>
+              <ul class="list-decimal">
+                <li><a class="inline" href="//cal.com/ritualpoint/reading-big" target="_blank">Big ⚡ Reading</a></li>
+                <li><a class="inline" href="//cal.com/ritualpoint/reading-small" target="_blank">Small 🐛 Reading</a></li>
+              </ul>
+            </li>
           </ul>
         </li>
         <li>
@@ -59,9 +65,6 @@
       @apply text-2xl;
       ul {
         @apply text-lg ml-8;
-      }
-      a {
-        @apply block;
       }
     }
   }
