@@ -1,17 +1,23 @@
 <template>
   <div>
     <div v-if="error" class="text-red-500">{{ error }}</div>
-    <ul :class="viewMode === 'row' ? 'flex flex-wrap gap-4' : 'flex flex-col space-y-4'">
+    <ul :class="viewMode === 'row' ? 'flex flex-wrap gap-4' : 'flex flex-col space-y-4'"
+        class="list-item">
       <li
         v-for="event in events"
         :key="event.title + event.startTime"
-        class="border border-gray-300 rounded-lg p-4 shadow-md flex flex-col"
+        class="flex flex-col ml-2 p-2 border-l-2 border-pink-500"
       >
-        <h3 class="text-lg font-bold">{{ event.startTime }}</h3>
-        <p class="text-gray-600">{{ event.title }}</p>
-        <p v-if="event.description" class="text-sm text-gray-700 mt-2">
-          {{ event.description }}
-        </p>
+      
+      <details v-if="event.description">
+        <summary>
+            <h3 class="text-lg font-bold inline">{{ event.title }}</h3>
+            <p class="text-lg text-pink-300">{{ formatToMountainTime(event.startTime) }}</p>
+          </summary>
+          <p class="text-sm mt-2">
+            {{ event.description }}
+          </p>
+        </details>
       </li>
     </ul>
   </div>
@@ -28,18 +34,10 @@ const props = defineProps({
     type: String,
     default: 'stacked', // 'stacked' or 'row'
   },
-  dateFormat: {
-    type: String,
-    default: 'stacked', // 'stacked' or 'row'
-  },
   maxEvents: {
     type: Number,
     default: 10,
-  },
-  repeats: {
-    type: Object,
-    default: () => ({ daily: 10, monthly: 5, yearly: 2 }),
-  },
+  }
 });
 
 const events = ref([]);
@@ -50,20 +48,21 @@ const transformEvents = (json) => {
 
   const parsedEvents = [];
   json.items.forEach((event) => {
-    const start = new Date(event.start.dateTime || event.start.date);
+    const start = toUTCDate(new Date(event.start.dateTime || event.start.date));
+
     const parsedEvent = {
-      title: event.summary || 'No Title',
+      title: event.summary || '',
       description: cleanDescription(event.description || ''),
-      startTime: formatDate(event.start.dateTime || event.start.date),
-      endTime: event.end?.dateTime ? formatDate(event.end.dateTime) : null,
-    }
+      startTime: start,
+      endTime: event.end?.dateTime ? toUTCDate(new Date(event.end.dateTime)) : null,
+    };
 
     if (start > new Date()) {
       parsedEvents.push(parsedEvent);
-      if (event.recurrence) {
-        const recurrence = parseRecurrence(event.recurrence[0], parsedEvent);
-        parsedEvents.push(...recurrence);
-      }
+      // if (event.recurrence) {
+      //   const recurrence = parseRecurrence(event.recurrence[0], parsedEvent);
+      //   parsedEvents.push(...recurrence);
+      // }
     }
   });
 
@@ -71,21 +70,24 @@ const transformEvents = (json) => {
 };
 
 const parseRecurrence = (rrule, event) => {
+  const limit = 10;
   const events = [];
 
   try {
     const rule = RRule.fromString(rrule);
-    const dates = rule.all().slice(0, 10);
 
+    // Use the start time of the event as the basis for recurrence calculation
+    const startUTC = event.startTime;
+
+    // Generate recurrence dates between start time and far-future limit, slice to match repeats limit
+    const dates = rule.between(startUTC, new Date(Date.UTC(2100, 0, 1)))
+      .slice(0, limit);
 
     dates.forEach((date) => {
-      
-      // add logic to measure the start and end date of the event object, then set the endTime of this event
-      
       events.push({
         title: event.title,
         description: event.description,
-        startTime: formatDate(date),
+        startTime: toUTCDate(date),
         endTime: event.endTime,
       });
     });
@@ -103,10 +105,27 @@ const cleanDescription = (description) => {
     .replace(/&[^;]+;/g, ''); // Remove HTML entities
 };
 
-const formatDate = (dateString) => {
-  const date = new Date(dateString);
-  const options = { timeZone: 'America/Denver', weekday: 'long', month: 'short', day: 'numeric', hour: '2-digit', minute: '2-digit', hour12: true };
-  return new Intl.DateTimeFormat(undefined, options).format(date);
+const toUTCDate = (date) => {
+  return new Date(Date.UTC(
+    date.getUTCFullYear(),
+    date.getUTCMonth(),
+    date.getUTCDate(),
+    date.getUTCHours(),
+    date.getUTCMinutes()
+  ));
+};
+
+const formatToMountainTime = (utcDate) => {
+  const options = {
+    timeZone: 'America/Denver',
+    weekday: 'long',
+    month: 'short',
+    day: 'numeric',
+    hour: 'numeric',
+    minute: '2-digit',
+    hour12: true,
+  };
+  return new Intl.DateTimeFormat(undefined, options).format(utcDate);
 };
 
 onMounted(async () => {
