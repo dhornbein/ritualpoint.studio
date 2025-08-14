@@ -86,7 +86,7 @@
 </style>
 
 <script setup>
-import { defineProps, ref, watch, onMounted } from 'vue';
+import { ref, watch, onMounted } from 'vue';
 
 const props = defineProps({
   flipOnClick: {

@@ -43,7 +43,7 @@
             <p v-if="formMessage" class="text-green-200">{{ formMessage }}</p>
             <p class="text-red-200" v-else-if="formError">{{ formError }} try emailing me <a
                 href="mailto:drew@ritualpoint.studio">Drew@RitualPoint.Studio</a></p>
-            <p v-else>
+            <div v-else>
               <label for="reader__email">Give me your email for a hand written response to your question:</label>
               <input id="reader__email" type="email" name="email" placeholder="enter your email here..." v-model="email"
                 required
@@ -51,7 +51,7 @@
               <button class="btn" type="submit">Email Me </button>
               <p class="italic text-center mb-10"><nuxt-link to="/reading" class="link-wavy text-pink-400">Learn more about
           private readings</nuxt-link></p>
-            </p>
+            </div>
           </div>
           <div class="message__default" v-else>
             <p v-if="!question">Enter your question, then flip (press) a card to find out...</p>
