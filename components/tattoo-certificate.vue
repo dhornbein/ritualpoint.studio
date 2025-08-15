@@ -6,8 +6,8 @@
 </template>
 
 <script setup>
-const certificateNumber = '8460 7 11 12 2023'
-const certificateDate = 'Nov 12th 2023'
+const certificateNumber = '8460 7 15 08 2025'
+const certificateDate = 'Aug 15th 2025'
 const certificateName = 'Bloodborne Pathogens Training and Infection Control for Body Art Professionals'
 const verificationURL = 'https://www.bodyarttraininggroup.com/custom/check.aspx'
 </script>

@@ -7,6 +7,8 @@
 
     <p>Choose one of these options to get in touch.</p>
 
+    <input type="text" class="border border-gray-300 p-2 rounded bg-transparent" value="tattoo@ritualpoint.studio" readonly onclick="this.select();">
+
     <div class="flex flex-col gap-4">
       <BaseLink :link="link" v-for="(link, idx) in links" :key="idx" />
     </div>
@@ -21,11 +23,11 @@
 <script setup>
 const links = [
   {
-    href: 'https://airtable.com/shrLSG7NSYbLens0K',
+    href: 'mailto:tattoo@ritualpoint.studio',
     class: '',
     title: 'Tattoo idea form',
-    subtitle: 'Fill out this form and I\'ll get in touch with you!',
-    verb: 'Submit',
+    subtitle: 'Tell me about what you want to do',
+    verb: 'Email',
     img: '/img/eye.png'
   },
   {

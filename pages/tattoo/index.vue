@@ -42,22 +42,6 @@
           <img src="/tattoo/clients-cindy.jpg" alt="">
           <img src="/tattoo/art-cindy.jpg" alt="">
         </div>
-        <div class="flex justify-center"><img src="/img/hand-bill.png" alt="" class="h-20 text-center"></div>
-        <p class="text-sm text-gray-300 text-center">Hourly Sliding Scale Price</p>
-        <div class="sliding-scale flex justify-between items-center text-2xl">
-          <div>$90</div>
-          <hr class="w-full mx-6 border-dotted">
-          <div>$170</div>
-        </div>
-        <p>Sliding scale price of $90 to $170 an hour (half day is typically 4 hours). The size and complexity of a
-          piece will greatly impact the time and thus the price.</p>
-        <nuxt-link v-if="!embedded" to="/tattoo/consult"
-          class="underline my-10 decoration-wavy underline-offset-4 bg-indigo-900/25 text-indigo-300 p-6 border border-indigo-300 text-center rounded">Click
-          here for a free consultation</nuxt-link>
-        <p class="italic text-indigo-200">I want to make this sacred practice accessible to everyone, so I will consider
-          trades and discounts, but I urge you to be generous. Money is power and you deserve to pour power into
-          yourself.</p>
-        <p>I also offer at-home and virtual tarot readings and more traditional tattooing experience.</p>
       </div>
 
       <div id="carousel" class="lg:hidden relative flex gap-6 snap-x snap-proximity overflow-x-auto">
@@ -67,7 +51,7 @@
       </div>
 
       <div class="tattoo-body">
-        <p class="text-sm">&lt;&mdash; Scroll</p>
+        <p class="text-sm sm:hidden">&lt;&mdash; Scroll</p>
         <div class="flex justify-center"><img src="/img/squiggle.png" alt="" class="h-10 my-10"></div>
         <p>I bring the values of comfort, ritual, and safety to my practice.</p>
         <img src="/tattoo/hand-002.png" alt="">
