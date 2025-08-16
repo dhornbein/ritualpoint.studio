@@ -4,8 +4,10 @@
 
     <div class="flex flex-col gap-8 w-full lg:w-auto">
       <div class="tattoo-body">
-        <nuxt-link v-if="!embedded" to="/" class="link-wavy text-xl">Go
-          Home</nuxt-link>
+        <div class="flex gap-4">
+          <nuxt-link v-if="!embedded" to="/" class="link-wavy text-xl">Go Home</nuxt-link>
+          <nuxt-link v-if="!embedded" to="/tattoo/gallery" class="link-wavy text-xl">Tattoo Gallery</nuxt-link>
+        </div>
         <h1 class="title md:!text-4xl">At Home Divine Tattoo</h1>
         <p>Humans have been adorning our bodies with ink for millennia. I am carrying on the tradition of hand-poked
           tattoos within a ritualized container that is comfy and safe.</p>
@@ -155,6 +157,30 @@ const portfolio = [
     src: '/tattoo/art-nav.jpg',
     text: ''
   },
+  {
+    src: '/tattoo/art-eli.jpg',
+    text: ''
+  },
+  {
+    src: '/tattoo/art-erin-eye.jpg',
+    text: ''
+  },
+  {
+    src: '/tattoo/art-moth.jpg',
+    text: ''
+  },
+  {
+    src: '/tattoo/art-oscar-2.jpg',
+    text: ''
+  },
+  {
+    src: '/tattoo/art-root-bone.jpg',
+    text: ''
+  },
+  {
+    src: '/tattoo/art-spider.jpg',
+    text: ''
+  },
 ]
 </script>
 
@@ -165,7 +191,7 @@ const portfolio = [
     @apply rounded;
   }
   a {
-    @apply link-wavy text-indigo-300 hover:text-pink-400;
+    @apply text-indigo-300 hover:text-pink-400;
   }
 }
 </style>
